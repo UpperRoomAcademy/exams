@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Systems of Linear Equations Exam</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .timer {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .timer.warning {
+            background: rgba(255,69,0,0.8);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .exam-content {
+            padding: 30px;
+            display: none;
+        }
+
+        .start-screen {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .start-screen h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        .start-screen p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .question {
+            background: #f8f9fa;
+            margin: 20px 0;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .question h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .method-tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-bottom: 15px;
+        }
+
+        .system {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        .answer-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .answer-input input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .answer-input input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .answer-input label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 30px auto;
+            display: block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .results {
+            display: none;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .score {
+            font-size: 3em;
+            color: #11998e;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .grade {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            padding: 15px 30px;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        .grade.excellent {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .grade.good {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .grade.needs-improvement {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+
+        .detailed-results {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .result-item {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+            border-left: 4px solid #ddd;
+        }
+
+        .result-item.correct {
+            border-left-color: #11998e;
+            background: #f0fff4;
+        }
+
+        .result-item.incorrect {
+            border-left-color: #ff6b6b;
+            background: #fff5f5;
+        }
+
+        .restart-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .restart-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .timer {
+                font-size: 1.2em;
+                padding: 10px 20px;
+            }
+            
+            .answer-input {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .answer-input input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Systems of Linear Equations</h1>
+            <div class="timer" id="timer">50:00</div>
+        </div>
+
+        <div class="start-screen" id="startScreen">
+            <h2>Welcome to Your Math Exam</h2>
+            <p>This exam contains 17 questions on solving systems of linear equations:</p>
+            <ul style="text-align: left; display: inline-block; margin-bottom: 20px;">
+                <li>10 questions using the elimination method</li>
+                <li>7 questions using the substitution method</li>
+            </ul>
+            <p>You have 50 minutes to complete the exam. The timer will start when you begin.</p>
+            <button class="start-btn" onclick="startExam()">Start Exam</button>
+        </div>
+
+        <div class="exam-content" id="examContent">
+            <!-- Elimination Method Questions -->
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 1: Solve the system of equations</h3>
+                <div class="system">
+                    2x + 3y = 7<br>
+                    4x - 3y = 5
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q1x"></label>
+                    <label>y = <input type="number" step="0.1" id="q1y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 2: Solve the system of equations</h3>
+                <div class="system">
+                    x + 2y = 8<br>
+                    3x - 2y = 4
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q2x"></label>
+                    <label>y = <input type="number" step="0.1" id="q2y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 3: Solve the system of equations</h3>
+                <div class="system">
+                    5x + 2y = 13<br>
+                    3x + 4y = 15
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q3x"></label>
+                    <label>y = <input type="number" step="0.1" id="q3y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 4: Solve the system of equations</h3>
+                <div class="system">
+                    2x - y = 3<br>
+                    x + y = 6
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q4x"></label>
+                    <label>y = <input type="number" step="0.1" id="q4y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 5: Solve the system of equations</h3>
+                <div class="system">
+                    3x + 4y = 25<br>
+                    2x - 4y = 0
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q5x"></label>
+                    <label>y = <input type="number" step="0.1" id="q5y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 6: Solve the system of equations</h3>
+                <div class="system">
+                    6x + 3y = 18<br>
+                    4x - 3y = 12
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q6x"></label>
+                    <label>y = <input type="number" step="0.1" id="q6y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 7: Solve the system of equations</h3>
+                <div class="system">
+                    2x + 5y = 16<br>
+                    3x - 5y = 14
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q7x"></label>
+                    <label>y = <input type="number" step="0.1" id="q7y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 8: Solve the system of equations</h3>
+                <div class="system">
+                    4x + 2y = 20<br>
+                    6x - 2y = 10
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q8x"></label>
+                    <label>y = <input type="number" step="0.1" id="q8y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 9: Solve the system of equations</h3>
+                <div class="system">
+                    7x + 3y = 29<br>
+                    2x - 3y = 1
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q9x"></label>
+                    <label>y = <input type="number" step="0.1" id="q9y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Elimination Method</span>
+                <h3>Question 10: Solve the system of equations</h3>
+                <div class="system">
+                    3x + 2y = 11<br>
+                    5x - 2y = 13
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q10x"></label>
+                    <label>y = <input type="number" step="0.1" id="q10y"></label>
+                </div>
+            </div>
+
+            <!-- Substitution Method Questions -->
+            <div class="question">
+                <span class="method-tag">Substitution Method</span>
+                <h3>Question 11: Solve the system of equations</h3>
+                <div class="system">
+                    y = 2x + 1<br>
+                    x + y = 7
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q11x"></label>
+                    <label>y = <input type="number" step="0.1" id="q11y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Substitution Method</span>
+                <h3>Question 12: Solve the system of equations</h3>
+                <div class="system">
+                    x = 3y - 2<br>
+                    2x + y = 8
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q12x"></label>
+                    <label>y = <input type="number" step="0.1" id="q12y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Substitution Method</span>
+                <h3>Question 13: Solve the system of equations</h3>
+                <div class="system">
+                    y = x - 3<br>
+                    3x + 2y = 9
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q13x"></label>
+                    <label>y = <input type="number" step="0.1" id="q13y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Substitution Method</span>
+                <h3>Question 14: Solve the system of equations</h3>
+                <div class="system">
+                    x = 2y + 4<br>
+                    3x - y = 17
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q14x"></label>
+                    <label>y = <input type="number" step="0.1" id="q14y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Substitution Method</span>
+                <h3>Question 15: Solve the system of equations</h3>
+                <div class="system">
+                    y = 4x - 5<br>
+                    2x + 3y = 13
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q15x"></label>
+                    <label>y = <input type="number" step="0.1" id="q15y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Substitution Method</span>
+                <h3>Question 16: Solve the system of equations</h3>
+                <div class="system">
+                    x = y + 2<br>
+                    4x - 3y = 14
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q16x"></label>
+                    <label>y = <input type="number" step="0.1" id="q16y"></label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="method-tag">Substitution Method</span>
+                <h3>Question 17: Solve the system of equations</h3>
+                <div class="system">
+                    y = 3x + 1<br>
+                    5x - 2y = 8
+                </div>
+                <div class="answer-input">
+                    <label>x = <input type="number" step="0.1" id="q17x"></label>
+                    <label>y = <input type="number" step="0.1" id="q17y"></label>
+                </div>
+            </div>
+
+            <button class="submit-btn" onclick="submitExam()">Submit Exam</button>
+        </div>
+
+        <div class="results" id="results">
+            <div class="score" id="scoreDisplay">0/17</div>
+            <div class="grade" id="gradeDisplay">Grade</div>
+            <div class="detailed-results" id="detailedResults"></div>
+            <button class="restart-btn" onclick="restartExam()">Take Exam Again</button>
+        </div>
+    </div>
+
+    <script>
+        let timeLeft = 50 * 60; // 50 minutes in seconds
+        let timerInterval;
+        let examStarted = false;
+
+        const answers = {
+            q1: {x: 2, y: 1},
+            q2: {x: 3, y: 2.5},
+            q3: {x: 1, y: 4},
+            q4: {x: 3, y: 3},
+            q5: {x: 5, y: 2.5},
+            q6: {x: 3, y: 0},
+            q7: {x: 6, y: 0.8},
+            q8: {x: 3, y: 4},
+            q9: {x: 4, y: 7/3},
+            q10: {x: 3, y: 1},
+            q11: {x: 2, y: 5},
+            q12: {x: 4, y: 2},
+            q13: {x: 3, y: 0},
+            q14: {x: 6, y: 1},
+            q15: {x: 2, y: 3},
+            q16: {x: 4, y: 2},
+            q17: {x: 2, y: 7}
+        };
+
+        function startExam() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('examContent').style.display = 'block';
+            examStarted = true;
+            startTimer();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(function() {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 300) { // 5 minutes warning
+                    document.getElementById('timer').classList.add('warning');
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function submitExam() {
+            if (!examStarted) return;
+            
+            clearInterval(timerInterval);
+            
+            let score = 0;
+            let resultsHTML = '<h3>Detailed Results:</h3>';
+            
+            for (let i = 1; i <= 17; i++) {
+                const userX = parseFloat(document.getElementById(`q${i}x`).value) || 0;
+                const userY = parseFloat(document.getElementById(`q${i}y`).value) || 0;
+                const correctX = answers[`q${i}`].x;
+                const correctY = answers[`q${i}`].y;
+                
+                const isCorrect = (Math.abs(userX - correctX) < 0.01) && (Math.abs(userY - correctY) < 0.01);
+                
+                if (isCorrect) {
+                    score++;
+                    resultsHTML += `<div class="result-item correct">
+                        <strong>Question ${i}:</strong> ✓ Correct
+                        <br>Your answer: x = ${userX}, y = ${userY}
+                    </div>`;
+                } else {
+                    resultsHTML += `<div class="result-item incorrect">
+                        <strong>Question ${i}:</strong> ✗ Incorrect
+                        <br>Your answer: x = ${userX}, y = ${userY}
+                        <br>Correct answer: x = ${correctX}, y = ${correctY}
+                    </div>`;
+                }
+            }
+            
+            document.getElementById('examContent').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('scoreDisplay').textContent = `${score}/17`;
+            document.getElementById('detailedResults').innerHTML = resultsHTML;
+            
+            const percentage = (score / 17) * 100;
+            const gradeElement = document.getElementById('gradeDisplay');
+            
+            if (percentage >= 90) {
+                gradeElement.textContent = 'Excellent! (A)';
+                gradeElement.className = 'grade excellent';
+            } else if (percentage >= 80) {
+                gradeElement.textContent = 'Good Job! (B)';
+                gradeElement.className = 'grade good';
+            } else if (percentage >= 70) {
+                gradeElement.textContent = 'Satisfactory (C)';
+                gradeElement.className = 'grade good';
+            } else {
+                gradeElement.textContent = 'Needs Improvement';
+                gradeElement.className = 'grade needs-improvement';
+            }
+        }
+
+        function restartExam() {
+            // Reset all values
+            timeLeft = 50 * 60;
+            examStarted = false;
+            document.getElementById('timer').classList.remove('warning');
+            document.getElementById('timer').textContent = '50:00';
+            
+            // Clear all inputs
+            for (let i = 1; i <= 17; i++) {
+                document.getElementById(`q${i}x`).value = '';
+                document.getElementById(`q${i}y`).value = '';
+            }
+            
+            // Show start screen
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('startScreen').style.display = 'block';
+        }
+
+        // Prevent form submission on Enter key
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
