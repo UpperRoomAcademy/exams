@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8th Grade Math Transformations Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #4ecdc4;
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #4ecdc4;
+            padding-bottom: 10px;
+        }
+
+        .transformation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .transformation-table th {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .transformation-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        .transformation-table tr:hover {
+            background-color: #f5f5f5;
+            transition: background-color 0.3s ease;
+        }
+
+        .formula {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #3498db;
+            margin: 10px 0;
+        }
+
+        .key-points {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .key-points h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .problem-set {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #4ecdc4;
+            margin: 20px 0;
+        }
+
+        .problem {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .answer-input {
+            margin: 10px 0;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .check-btn {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .correct {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .incorrect {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .coordinate-grid {
+            display: inline-block;
+            background: white;
+            border: 2px solid #ddd;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            background: #ecf0f1;
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            margin-right: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .tab.active {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: white;
+            border-radius: 0 10px 10px 10px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .visual-example {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .transformation-icon {
+            font-size: 2em;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔄 Math Transformations Review Session</h1>
+            <p>Master Translation, Reflection, Rotation, and Dilation</p>
+        </div>
+
+        <div class="content">
+            <!-- Quick Reference Table -->
+            <div class="section">
+                <h2>📊 Transformations Quick Reference</h2>
+                <table class="transformation-table">
+                    <thead>
+                        <tr>
+                            <th>Transformation</th>
+                            <th>Definition</th>
+                            <th>Formula/Rule</th>
+                            <th>Key Properties</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Translation</strong><br>📍</td>
+                            <td>Slides a figure to a new position without changing size, shape, or orientation</td>
+                            <td><div class="formula">(x, y) → (x + a, y + b)<br>where a = horizontal shift<br>b = vertical shift</div></td>
+                            <td>• Preserves size and shape<br>• Same orientation<br>• All points move same distance</td>
+                            <td>(3, 2) → (6, 5)<br>Moved 3 right, 3 up</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reflection</strong><br>🪞</td>
+                            <td>Flips a figure over a line of reflection (mirror line)</td>
+                            <td><div class="formula">Over x-axis: (x, y) → (x, -y)<br>Over y-axis: (x, y) → (-x, y)<br>Over y = x: (x, y) → (y, x)</div></td>
+                            <td>• Preserves size and shape<br>• Changes orientation<br>• Equal distance from mirror line</td>
+                            <td>(4, 3) over x-axis → (4, -3)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rotation</strong><br>🔄</td>
+                            <td>Turns a figure around a fixed point (center of rotation)</td>
+                            <td><div class="formula">90° CCW: (x, y) → (-y, x)<br>180°: (x, y) → (-x, -y)<br>270° CCW: (x, y) → (y, -x)</div></td>
+                            <td>• Preserves size and shape<br>• Changes orientation<br>• Fixed center point</td>
+                            <td>(2, 1) rotated 90° CCW → (-1, 2)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dilation</strong><br>🔍</td>
+                            <td>Enlarges or reduces a figure by a scale factor from a center point</td>
+                            <td><div class="formula">(x, y) → (kx, ky)<br>where k = scale factor<br>k > 1: enlargement<br>0 < k < 1: reduction</div></td>
+                            <td>• Changes size<br>• Preserves shape<br>• Same orientation<br>• Similar figures</td>
+                            <td>(3, 4) with k = 2 → (6, 8)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Detailed Explanations with Tabs -->
+            <div class="section">
+                <h2>📚 Detailed Explanations</h2>
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('translation')">Translation</button>
+                    <button class="tab" onclick="showTab('reflection')">Reflection</button>
+                    <button class="tab" onclick="showTab('rotation')">Rotation</button>
+                    <button class="tab" onclick="showTab('dilation')">Dilation</button>
+                </div>
+
+                <div id="translation" class="tab-content active">
+                    <h3>📍 Translation (Slide)</h3>
+                    <p>A translation moves every point of a figure the same distance in the same direction. Think of it as sliding a piece of paper across a table.</p>
+                    
+                    <div class="key-points">
+                        <h4>Key Points:</h4>
+                        <ul>
+                            <li>The figure looks exactly the same, just in a new location</li>
+                            <li>Use vectors to describe translations: ⟨a, b⟩ means move a units horizontally and b units vertically</li>
+                            <li>Positive a = right, negative a = left</li>
+                            <li>Positive b = up, negative b = down</li>
+                        </ul>
+                    </div>
+
+                    <div class="visual-example">
+                        <p><strong>Visual Example:</strong></p>
+                        <p>Triangle ABC with vertices A(1,2), B(3,2), C(2,4)</p>
+                        <p>Translated by ⟨4, -3⟩</p>
+                        <p>New vertices: A'(5,-1), B'(7,-1), C'(6,1)</p>
+                    </div>
+                </div>
+
+                <div id="reflection" class="tab-content">
+                    <h3>🪞 Reflection (Flip)</h3>
+                    <p>A reflection flips a figure over a line called the line of reflection. Every point on the original figure has a corresponding point on the reflected figure that is the same distance from the line of reflection.</p>
+                    
+                    <div class="key-points">
+                        <h4>Common Lines of Reflection:</h4>
+                        <ul>
+                            <li><strong>x-axis:</strong> (x, y) → (x, -y)</li>
+                            <li><strong>y-axis:</strong> (x, y) → (-x, y)</li>
+                            <li><strong>y = x:</strong> (x, y) → (y, x)</li>
+                            <li><strong>y = -x:</strong> (x, y) → (-y, -x)</li>
+                        </ul>
+                    </div>
+
+                    <div class="visual-example">
+                        <p><strong>Memory Tip:</strong></p>
+                        <p>When reflecting over the x-axis, the x-coordinate stays the same, but y becomes its opposite!</p>
+                    </div>
+                </div>
+
+                <div id="rotation" class="tab-content">
+                    <h3>🔄 Rotation (Turn)</h3>
+                    <p>A rotation turns a figure around a fixed point called the center of rotation. The most common center is the origin (0,0), and rotations are usually 90°, 180°, or 270°.</p>
+                    
+                    <div class="key-points">
+                        <h4>Standard Rotations about Origin:</h4>
+                        <ul>
+                            <li><strong>90° counterclockwise:</strong> (x, y) → (-y, x)</li>
+                            <li><strong>180°:</strong> (x, y) → (-x, -y)</li>
+                            <li><strong>270° counterclockwise:</strong> (x, y) → (y, -x)</li>
+                        </ul>
+                    </div>
+
+                    <div class="visual-example">
+                        <p><strong>Memory Trick for 90° CCW:</strong></p>
+                        <p>"Negative y comes first, then x" → (-y, x)</p>
+                    </div>
+                </div>
+
+                <div id="dilation" class="tab-content">
+                    <h3>🔍 Dilation (Resize)</h3>
+                    <p>A dilation changes the size of a figure by multiplying all coordinates by a scale factor. The center of dilation is usually the origin unless specified otherwise.</p>
+                    
+                    <div class="key-points">
+                        <h4>Scale Factor Rules:</h4>
+                        <ul>
+                            <li><strong>k > 1:</strong> Enlargement (figure gets bigger)</li>
+                            <li><strong>k = 1:</strong> No change</li>
+                            <li><strong>0 < k < 1:</strong> Reduction (figure gets smaller)</li>
+                            <li><strong>k < 0:</strong> Changes size AND orientation</li>
+                        </ul>
+                    </div>
+
+                    <div class="visual-example">
+                        <p><strong>Example:</strong></p>
+                        <p>Point (6, 8) dilated by scale factor 0.5 → (3, 4)</p>
+                        <p>The figure is half the original size!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Practice Problems -->
+            <div class="section">
+                <h2>🎯 Practice Problems</h2>
+                
+                <div class="problem-set">
+                    <h3>Problem Set 1: Translation</h3>
+                    
+                    <div class="problem">
+                        <p><strong>1.</strong> Point A(3, -2) is translated by the vector ⟨-4, 7⟩. What are the coordinates of A'?</p>
+                        <input type="text" class="answer-input" id="q1" placeholder="Enter as (x, y)">
+                        <button class="check-btn" onclick="checkAnswer('q1', '(-1, 5)', 1)">Check Answer</button>
+                        <div id="result1"></div>
+                    </div>
+
+                    <div class="problem">
+                        <p><strong>2.</strong> Triangle DEF has vertices D(0, 0), E(4, 2), F(1, 5). If it's translated 3 units left and 2 units down, what are the new coordinates of E'?</p>
+                        <input type="text" class="answer-input" id="q2" placeholder="Enter as (x, y)">
+                        <button class="check-btn" onclick="checkAnswer('q2', '(1, 0)', 2)">Check Answer</button>
+                        <div id="result2"></div>
+                    </div>
+                </div>
+
+                <div class="problem-set">
+                    <h3>Problem Set 2: Reflection</h3>
+                    
+                    <div class="problem">
+                        <p><strong>3.</strong> Point B(5, -3) is reflected over the x-axis. What are the coordinates of B'?</p>
+                        <input type="text" class="answer-input" id="q3" placeholder="Enter as (x, y)">
+                        <button class="check-btn" onclick="checkAnswer('q3', '(5, 3)', 3)">Check Answer</button>
+                        <div id="result3"></div>
+                    </div>
+
+                    <div class="problem">
+                        <p><strong>4.</strong> Point C(-2, 4) is reflected over the y-axis. What are the coordinates of C'?</p>
+                        <input type="text" class="answer-input" id="q4" placeholder="Enter as (x, y)">
+                        <button class="check-btn" onclick="checkAnswer('q4', '(2, 4)', 4)">Check Answer</button>
+                        <div id="result4"></div>
+                    </div>
+                </div>
+
+                <div class="problem-set">
+                    <h3>Problem Set 3: Rotation</h3>
+                    
+                    <div class="problem">
+                        <p><strong>5.</strong> Point D(3, 1) is rotated 90° counterclockwise about the origin. What are the coordinates of D'?</p>
+                        <input type="text" class="answer-input" id="q5" placeholder="Enter as (x, y)">
+                        <button class="check-btn" onclick="checkAnswer('q5', '(-1, 3)', 5)">Check Answer</button>
+                        <div id="result5"></div>
+                    </div>
+
+                    <div class="problem">
+                        <p><strong>6.</strong> Point E(-4, 2) is rotated 180° about the origin. What are the coordinates of E'?</p>
+                        <input type="text" class="answer-input" id="q6" placeholder="Enter as (x, y)">
+                        <button class="check-btn" onclick="checkAnswer('q6', '(4, -2)', 6)">Check Answer</button>
+                        <div id="result6"></div>
+                    </div>
+                </div>
+
+                <div class="problem-set">
+                    <h3>Problem Set 4: Dilation</h3>
+                    
+                    <div class="problem">
+                        <p><strong>7.</strong> Point F(6, -4) is dilated by a scale factor of 1/2 with center at the origin. What are the coordinates of F'?</p>
+                        <input type="text" class="answer-input" id="q7" placeholder="Enter as (x, y)">
+                        <button class="check-btn" onclick="checkAnswer('q7', '(3, -2)', 7)">Check Answer</button>
+                        <div id="result7"></div>
+                    </div>
+
+                    <div class="problem">
+                        <p><strong>8.</strong> Point G(-1, 3) is dilated by a scale factor of 3 with center at the origin. What are the coordinates of G'?</p>
+                        <input type="text" class="answer-input" id="q8" placeholder="Enter as (x, y)">
+                        <button class="check-btn" onclick="checkAnswer('q8', '(-3, 9)', 8)">Check Answer</button>
+                        <div id="result8"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review Questions -->
+            <div class="section">
+                <h2>🤔 Review Questions</h2>
+                
+                <div class="problem-set">
+                    <h3>Conceptual Understanding</h3>
+                    
+                    <div class="problem">
+                        <p><strong>9.</strong> Which transformations preserve both size and shape? (Select all that apply)</p>
+                        <label><input type="checkbox" id="preserve-a"> Translation</label><br>
+                        <label><input type="checkbox" id="preserve-b"> Reflection</label><br>
+                        <label><input type="checkbox" id="preserve-c"> Rotation</label><br>
+                        <label><input type="checkbox" id="preserve-d"> Dilation</label><br>
+                        <button class="check-btn" onclick="checkPreserve()">Check Answer</button>
+                        <div id="preserve-result"></div>
+                    </div>
+
+                    <div class="problem">
+                        <p><strong>10.</strong> True or False: A dilation with scale factor -2 will make the figure twice as big and flip its orientation.</p>
+                        <label><input type="radio" name="tf" value="true"> True</label>
+                        <label><input type="radio" name="tf" value="false"> False</label><br>
+                        <button class="check-btn" onclick="checkTrueFalse()">Check Answer</button>
+                        <div id="tf-result"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="section">
+                <h2>📝 Key Takeaways</h2>
+                <div class="key-points">
+                    <h4>Remember These Important Points:</h4>
+                    <ul>
+                        <li><strong>Rigid Transformations:</strong> Translation, Reflection, and Rotation preserve size and shape</li>
+                        <li><strong>Non-Rigid Transformation:</strong> Dilation changes size but preserves shape</li>
+                        <li><strong>Congruent vs Similar:</strong> Rigid transformations create congruent figures; dilations create similar figures</li>
+                        <li><strong>Order Matters:</strong> When combining transformations, the order can affect the final result</li>
+                        <li><strong>Always Check Your Work:</strong> Plot points when in doubt to visualize the transformation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content and mark tab as active
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function checkAnswer(inputId, correctAnswer, questionNum) {
+            const userAnswer = document.getElementById(inputId).value.trim();
+            const resultDiv = document.getElementById('result' + questionNum);
+            
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                resultDiv.innerHTML = '<span class="correct">✓ Correct! Great job!</span>';
+            } else {
+                resultDiv.innerHTML = '<span class="incorrect">✗ Incorrect. The correct answer is ' + correctAnswer + '</span>';
+            }
+        }
+
+        function checkPreserve() {
+            const a = document.getElementById('preserve-a').checked;
+            const b = document.getElementById('preserve-b').checked;
+            const c = document.getElementById('preserve-c').checked;
+            const d = document.getElementById('preserve-d').checked;
+            const resultDiv = document.getElementById('preserve-result');
+            
+            if (a && b && c && !d) {
+                resultDiv.innerHTML = '<span class="correct">✓ Correct! Translation, Reflection, and Rotation are rigid transformations that preserve size and shape.</span>';
+            } else {
+                resultDiv.innerHTML = '<span class="incorrect">✗ Incorrect. Translation, Reflection, and Rotation preserve size and shape. Dilation only preserves shape.</span>';
+            }
+        }
+
+        function checkTrueFalse() {
+            const selected = document.querySelector('input[name="tf"]:checked');
+            const resultDiv = document.getElementById('tf-result');
+            
+            if (selected && selected.value === 'true') {
+                resultDiv.innerHTML = '<span class="correct">✓ Correct! A negative scale factor creates a larger figure AND flips its orientation.</span>';
+            } else {
+                resultDiv.innerHTML = '<span class="incorrect">✗ Incorrect. A scale factor of -2 makes the figure twice as big AND flips it (negative scale factors change orientation).</span>';
+            }
+        }
+    </script>
+</body>
+</html>
