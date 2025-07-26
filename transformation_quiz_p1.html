@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Transformations Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            background: #f8fafc;
+        }
+        
+        .question h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .question-type {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .multiple-choice {
+            background: #bee3f8;
+            color: #2b6cb0;
+        }
+        
+        .multiple-select {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        
+        .true-false {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            background: #edf2f7;
+            border-color: #4299e1;
+        }
+        
+        .option input {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            background: linear-gradient(45deg, #4299e1, #3182ce);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.4);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .score {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .correct-answers {
+            background: #f0fff4;
+            border: 2px solid #68d391;
+        }
+        
+        .answer-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 4px solid #4299e1;
+            background: white;
+        }
+        
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .correct-options {
+            color: #22543d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Geometric Transformations Quiz 🔄</h1>
+        
+        <form id="quizForm">
+            <!-- Multiple Choice Questions -->
+            <div class="question">
+                <span class="question-type multiple-choice">Multiple Choice</span>
+                <h3>1. Which transformation involves sliding a figure to a new position without changing its size, shape, or orientation?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="translation"> Translation
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="reflection"> Reflection
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="rotation"> Rotation
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="dilation"> Dilation
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="question-type multiple-choice">Multiple Choice</span>
+                <h3>2. What is the center of rotation also called?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="origin"> The origin point
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="fixed"> The fixed point
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="mirror"> The mirror point
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="scale"> The scale point
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="question-type multiple-choice">Multiple Choice</span>
+                <h3>3. In a dilation, what does a scale factor between 0 and 1 produce?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="enlargement"> An enlargement
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="reduction"> A reduction
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="no_change"> No size change
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="rotation"> A rotation
+                    </label>
+                </div>
+            </div>
+
+            <!-- True/False Questions -->
+            <div class="question">
+                <span class="question-type true-false">True/False</span>
+                <h3>4. A reflection always changes the orientation of a figure.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="true"> True
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="false"> False
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="question-type true-false">True/False</span>
+                <h3>5. Dilation is the only transformation that changes the size of a figure.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="true"> True
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="false"> False
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="question-type true-false">True/False</span>
+                <h3>6. Translation, reflection, and rotation are all rigid motions.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q6" value="true"> True
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q6" value="false"> False
+                    </label>
+                </div>
+            </div>
+
+            <!-- Multiple Select Questions -->
+            <div class="question">
+                <span class="question-type multiple-select">Multiple Select</span>
+                <h3>7. Which transformations preserve the shape of a figure? (Select all that apply)</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="checkbox" name="q7" value="translation"> Translation
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q7" value="reflection"> Reflection
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q7" value="rotation"> Rotation
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q7" value="dilation"> Dilation
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="question-type multiple-select">Multiple Select</span>
+                <h3>8. Which are properties of a reflection? (Select all that apply)</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="checkbox" name="q8" value="mirror_line"> Uses a line of reflection (mirror line)
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q8" value="equal_distance"> Points are equidistant from the mirror line
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q8" value="changes_size"> Changes the size of the figure
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" name="q8" value="flips_figure"> Flips the figure over a line
+                    </label>
+                </div>
+            </div>
+
+            <!-- More Mixed Questions -->
+            <div class="question">
+                <span class="question-type multiple-choice">Multiple Choice</span>
+                <h3>9. Which transformation creates similar figures but not necessarily congruent figures?</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q9" value="translation"> Translation
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="reflection"> Reflection
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="rotation"> Rotation
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q9" value="dilation"> Dilation
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <span class="question-type true-false">True/False</span>
+                <h3>10. In a translation, all points of a figure move the same distance in the same direction.</h3>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q10" value="true"> True
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q10" value="false"> False
+                    </label>
+                </div>
+            </div>
+        </form>
+
+        <button class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+
+        <div id="results" class="results">
+            <div class="score" id="scoreDisplay"></div>
+            <div class="correct-answers">
+                <h3>Correct Answers:</h3>
+                <div id="answerKey"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'translation',
+            q2: 'fixed',
+            q3: 'reduction',
+            q4: 'true',
+            q5: 'true',
+            q6: 'true',
+            q7: ['translation', 'reflection', 'rotation', 'dilation'],
+            q8: ['mirror_line', 'equal_distance', 'flips_figure'],
+            q9: 'dilation',
+            q10: 'true'
+        };
+
+        const answerExplanations = {
+            q1: "Translation slides a figure without changing size, shape, or orientation",
+            q2: "The center of rotation is called the fixed point around which the figure turns",
+            q3: "A scale factor between 0 and 1 produces a reduction (smaller figure)",
+            q4: "True - Reflection always changes orientation by flipping the figure",
+            q5: "True - Only dilation changes the size of a figure among the basic transformations",
+            q6: "True - Translation, reflection, and rotation preserve distances and are rigid motions",
+            q7: "All four transformations preserve shape (though dilation changes size)",
+            q8: "Reflection uses a mirror line, maintains equal distances, and flips the figure",
+            q9: "Dilation creates similar figures that may have different sizes",
+            q10: "True - In translation, all points move the same distance in the same direction"
+        };
+
+        const questionTypes = {
+            q1: 'Multiple Choice',
+            q2: 'Multiple Choice', 
+            q3: 'Multiple Choice',
+            q4: 'True/False',
+            q5: 'True/False',
+            q6: 'True/False',
+            q7: 'Multiple Select',
+            q8: 'Multiple Select',
+            q9: 'Multiple Choice',
+            q10: 'True/False'
+        };
+
+        function submitQuiz() {
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+            let score = 0;
+            let totalQuestions = 10;
+
+            // Calculate score
+            for (let i = 1; i <= totalQuestions; i++) {
+                const correct = correctAnswers[`q${i}`];
+                
+                if (Array.isArray(correct)) {
+                    // Multiple select question
+                    const userAnswers = formData.getAll(`q${i}`);
+                    const correctSet = new Set(correct);
+                    const userSet = new Set(userAnswers);
+                    
+                    if (correctSet.size === userSet.size && 
+                        [...correctSet].every(answer => userSet.has(answer))) {
+                        score++;
+                    }
+                } else {
+                    // Single answer question (radio button)
+                    const userAnswer = formData.get(`q${i}`);
+                    if (userAnswer === correct) {
+                        score++;
+                    }
+                }
+            }
+
+            // Display results
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const answerKey = document.getElementById('answerKey');
+
+            scoreDisplay.innerHTML = `Your Score: ${score}/${totalQuestions} (${Math.round(score/totalQuestions * 100)}%)`;
+            
+            let answerHTML = '';
+            for (let i = 1; i <= totalQuestions; i++) {
+                const correct = correctAnswers[`q${i}`];
+                const correctText = Array.isArray(correct) ? correct.join(', ') : correct;
+                
+                answerHTML += `
+                    <div class="answer-item">
+                        <div class="question-text">Question ${i} (${questionTypes[`q${i}`]}):</div>
+                        <div class="correct-options">Correct answer(s): ${correctText}</div>
+                        <div style="font-size: 0.9em; margin-top: 5px;">${answerExplanations[`q${i}`]}</div>
+                    </div>
+                `;
+            }
+            
+            answerKey.innerHTML = answerHTML;
+            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
