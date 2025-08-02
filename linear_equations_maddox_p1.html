@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Equations Review Session</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .question {
+            background: #f8fafc;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+        
+        .difficulty {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .easy { background: #c6f6d5; color: #22543d; }
+        .intermediate { background: #fed7aa; color: #c2410c; }
+        .hard { background: #fbb6ce; color: #9f1239; }
+        
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .options {
+            margin-left: 20px;
+        }
+        
+        .option {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option input {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .option label {
+            cursor: pointer;
+            color: #4a5568;
+            font-size: 1em;
+        }
+        
+        .submit-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .results {
+            display: none;
+            background: #e6fffa;
+            border: 2px solid #38b2ac;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .score {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #234e52;
+            margin-bottom: 20px;
+        }
+        
+        .answer-key {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .answer-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        
+        .correct-answer {
+            background: #c6f6d5;
+            border-left: 4px solid #38a169;
+        }
+        
+        .incorrect-answer {
+            background: #fed7d7;
+            border-left: 4px solid #e53e3e;
+        }
+        
+        .answer-explanation {
+            font-style: italic;
+            color: #4a5568;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Linear Equations Review Session</h1>
+        <p class="subtitle">Test your conceptual understanding of graphing linear equations</p>
+        
+        <form id="reviewForm">
+            <!-- Question 1 - Easy -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 1</span>
+                    <span class="difficulty easy">Easy</span>
+                </div>
+                <div class="question-text">Which of the following equations represent linear equations? (Select all that apply)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" id="q1a" name="q1" value="a">
+                        <label for="q1a">y = 3x + 7</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q1b" name="q1" value="b">
+                        <label for="q1b">y = x²+ 2</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q1c" name="q1" value="c">
+                        <label for="q1c">2x + 3y = 12</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q1d" name="q1" value="d">
+                        <label for="q1d">y = √x</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 - Easy -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 2</span>
+                    <span class="difficulty easy">Easy</span>
+                </div>
+                <div class="question-text">True or False: In the equation y = mx + b, the variable 'b' represents the y-intercept.</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2a" name="q2" value="true">
+                        <label for="q2a">True</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2b" name="q2" value="false">
+                        <label for="q2b">False</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 3</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">What does it mean for points to be collinear?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3a" name="q3" value="a">
+                        <label for="q3a">They have the same x-coordinate</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3b" name="q3" value="b">
+                        <label for="q3b">They lie on the same straight line</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3c" name="q3" value="c">
+                        <label for="q3c">They have the same y-coordinate</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3d" name="q3" value="d">
+                        <label for="q3d">They are equidistant from the origin</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 4</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">Which form of a linear equation is 3x - 2y = 8?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q4a" name="q4" value="a">
+                        <label for="q4a">Slope-intercept form</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4b" name="q4" value="b">
+                        <label for="q4b">Point-slope form</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4c" name="q4" value="c">
+                        <label for="q4c">Standard form</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4d" name="q4" value="d">
+                        <label for="q4d">Vertex form</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 5</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">True or False: A horizontal line has an undefined slope.</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q5a" name="q5" value="true">
+                        <label for="q5a">True</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5b" name="q5" value="false">
+                        <label for="q5b">False</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 6</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">What type of slope do perpendicular lines have in relation to each other?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q6a" name="q6" value="a">
+                        <label for="q6a">Equal slopes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6b" name="q6" value="b">
+                        <label for="q6b">Opposite slopes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6c" name="q6" value="c">
+                        <label for="q6c">Negative reciprocal slopes</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6d" name="q6" value="d">
+                        <label for="q6d">Positive reciprocal slopes</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 7</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">In the equation y = -4x + 9, what does the coefficient -4 represent?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q7a" name="q7" value="a">
+                        <label for="q7a">The y-intercept</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7b" name="q7" value="b">
+                        <label for="q7b">The x-intercept</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7c" name="q7" value="c">
+                        <label for="q7c">The slope</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7d" name="q7" value="d">
+                        <label for="q7d">The rate of change in x</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 8</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">Which methods can be used to graph a linear equation? (Select all that apply)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" id="q8a" name="q8" value="a">
+                        <label for="q8a">Using x- and y-intercepts</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q8b" name="q8" value="b">
+                        <label for="q8b">Creating a table of values</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q8c" name="q8" value="c">
+                        <label for="q8c">Using the vertex formula</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q8d" name="q8" value="d">
+                        <label for="q8d">Using slope and y-intercept</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 9 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 9</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">True or False: Parallel lines have the same slope.</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q9a" name="q9" value="true">
+                        <label for="q9a">True</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q9b" name="q9" value="false">
+                        <label for="q9b">False</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 10</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">What is the general form of point-slope form?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q10a" name="q10" value="a">
+                        <label for="q10a">y = mx + b</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q10b" name="q10" value="b">
+                        <label for="q10b">Ax + By = C</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q10c" name="q10" value="c">
+                        <label for="q10c">y - y₁ = m(x - x₁)</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q10d" name="q10" value="d">
+                        <label for="q10d">y = a(x - h)² + k</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 11 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 11</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">In a coordinate pair (x, y), what does the first number represent?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q11a" name="q11" value="a">
+                        <label for="q11a">The vertical distance from the origin</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q11b" name="q11" value="b">
+                        <label for="q11b">The horizontal distance from the origin</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q11c" name="q11" value="c">
+                        <label for="q11c">The slope of the line</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q11d" name="q11" value="d">
+                        <label for="q11d">The y-intercept</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 12 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 12</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">True or False: A vertical line has a slope of zero.</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q12a" name="q12" value="true">
+                        <label for="q12a">True</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q12b" name="q12" value="false">
+                        <label for="q12b">False</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 13 - Hard -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 13</span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <div class="question-text">Which statements about converting between forms of linear equations are correct? (Select all that apply)</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" id="q13a" name="q13" value="a">
+                        <label for="q13a">To convert from standard form to slope-intercept form, solve for y</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q13b" name="q13" value="b">
+                        <label for="q13b">Point-slope form requires knowing the slope and any point on the line</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q13c" name="q13" value="c">
+                        <label for="q13c">Standard form always has integer coefficients</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" id="q13d" name="q13" value="d">
+                        <label for="q13d">All three forms represent the same line when they have equivalent equations</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 14 - Hard -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 14</span>
+                    <span class="difficulty hard">Hard</span>
+                </div>
+                <div class="question-text">When creating a table of values to graph a linear equation, what is the most efficient approach?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q14a" name="q14" value="a">
+                        <label for="q14a">Choose random x-values and calculate corresponding y-values</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q14b" name="q14" value="b">
+                        <label for="q14b">Always use x-values from -10 to 10</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q14c" name="q14" value="c">
+                        <label for="q14c">Choose convenient x-values that make calculations easy and provide well-spaced points</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q14d" name="q14" value="d">
+                        <label for="q14d">Only use positive integer values for x</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 15 - Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    <span class="question-number">Question 15</span>
+                    <span class="difficulty intermediate">Intermediate</span>
+                </div>
+                <div class="question-text">What information do you need to write the equation of a line using point-slope form?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q15a" name="q15" value="a">
+                        <label for="q15a">Two points on the line</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q15b" name="q15" value="b">
+                        <label for="q15b">The slope and one point on the line</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q15c" name="q15" value="c">
+                        <label for="q15c">The x-intercept and y-intercept</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q15d" name="q15" value="d">
+                        <label for="q15d">The slope and y-intercept</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="submit-container">
+                <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Review</button>
+            </div>
+        </form>
+
+        <div id="results" class="results">
+            <div id="scoreDisplay" class="score"></div>
+            <div class="answer-key">
+                <h3>Answer Key & Explanations</h3>
+                <div id="answerKey"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: ['a', 'c'], // Linear equations
+            q2: 'true', // b represents y-intercept
+            q3: 'b', // Collinear means on same line
+            q4: 'c', // Standard form
+            q5: 'false', // Horizontal has slope 0, vertical has undefined
+            q6: 'c', // Perpendicular lines have negative reciprocal slopes
+            q7: 'c', // -4 is the slope
+            q8: ['a', 'b', 'd'], // Methods to graph linear equations
+            q9: 'true', // Parallel lines have same slope
+            q10: 'c', // Point-slope form
+            q11: 'b', // x-coordinate is horizontal distance
+            q12: 'false', // Vertical line has undefined slope
+            q13: ['a', 'b', 'd'], // Converting between forms
+            q14: 'c', // Efficient table approach
+            q15: 'b' // Point-slope needs slope and one point
+        };
+
+        const explanations = {
+            q1: "Linear equations have variables raised only to the first power. y = 3x + 7 and 2x + 3y = 12 are linear, while y = x² contains a squared term and y = √x contains a radical.",
+            q2: "In slope-intercept form y = mx + b, 'b' is indeed the y-intercept (where the line crosses the y-axis).",
+            q3: "Collinear points lie on the same straight line. This is the definition of collinearity.",
+            q4: "Standard form is written as Ax + By = C, where A, B, and C are constants. 3x - 2y = 8 fits this pattern.",
+            q5: "A horizontal line has a slope of 0 (zero), while a vertical line has an undefined slope.",
+            q6: "Perpendicular lines have slopes that are negative reciprocals of each other (if one slope is m, the other is -1/m).",
+            q7: "In y = mx + b form, the coefficient of x (here -4) represents the slope of the line.",
+            q8: "Linear equations can be graphed using intercepts, tables of values, or slope and y-intercept. The vertex formula is for parabolas, not lines.",
+            q9: "Parallel lines never intersect and have identical slopes (but different y-intercepts).",
+            q10: "Point-slope form is y - y₁ = m(x - x₁), where m is the slope and (x₁, y₁) is a known point.",
+            q11: "In an ordered pair (x, y), the first number (x) represents the horizontal distance from the origin.",
+            q12: "A vertical line has an undefined slope, while a horizontal line has a slope of zero.",
+            q13: "All these statements are correct: solving for y converts to slope-intercept form, point-slope needs slope and a point, and equivalent equations represent the same line regardless of form.",
+            q14: "The most efficient approach is choosing convenient x-values that make calculations simple and provide well-distributed points for accurate graphing.",
+            q15: "Point-slope form requires the slope of the line and the coordinates of one point on the line."
+        };
+
+        function submitQuiz() {
+            const form = document.getElementById('reviewForm');
+            const formData = new FormData(form);
+            let score = 0;
+            let totalQuestions = 15;
+            let userAnswers = {};
+            let results = [];
+
+            // Collect user answers
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                if (Array.isArray(correctAnswers[questionName])) {
+                    // Multiple select question
+                    userAnswers[questionName] = formData.getAll(questionName);
+                } else {
+                    // Single select question
+                    userAnswers[questionName] = formData.get(questionName);
+                }
+            }
+
+            // Check answers and calculate score
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const userAnswer = userAnswers[questionName];
+                const correctAnswer = correctAnswers[questionName];
+                let isCorrect = false;
+
+                if (Array.isArray(correctAnswer)) {
+                    // Multiple select - check if arrays match
+                    isCorrect = correctAnswer.length === userAnswer.length && 
+                               correctAnswer.every(ans => userAnswer.includes(ans));
+                } else {
+                    // Single select
+                    isCorrect = userAnswer === correctAnswer;
+                }
+
+                if (isCorrect) {
+                    score++;
+                }
+
+                results.push({
+                    question: i,
+                    correct: isCorrect,
+                    userAnswer: userAnswer,
+                    correctAnswer: correctAnswer,
+                    explanation: explanations[questionName]
+                });
+            }
+
+            // Display results
+            displayResults(score, totalQuestions, results);
+        }
+
+        function displayResults(score, total, results) {
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const answerKey = document.getElementById('answerKey');
+
+            // Calculate percentage
+            const percentage = Math.round((score / total) * 100);
+            
+            // Display score
+            scoreDisplay.innerHTML = `
+                <div>Your Score: ${score}/${total} (${percentage}%)</div>
+                <div style="font-size: 0.9em; margin-top: 10px; color: #4a5568;">
+                    ${percentage >= 80 ? '🎉 Excellent work!' : 
+                      percentage >= 70 ? '👍 Good job!' : 
+                      percentage >= 60 ? '📚 Keep studying!' : 
+                      '💪 More practice needed!'}
+                </div>
+            `;
+
+            // Display answer key
+            answerKey.innerHTML = '';
+            results.forEach((result, index) => {
+                const answerDiv = document.createElement('div');
+                answerDiv.className = `answer-item ${result.correct ? 'correct-answer' : 'incorrect-answer'}`;
+                
+                let correctAnswerText = '';
+                if (Array.isArray(result.correctAnswer)) {
+                    correctAnswerText = result.correctAnswer.join(', ').toUpperCase();
+                } else {
+                    correctAnswerText = result.correctAnswer.charAt(0).toUpperCase() + result.correctAnswer.slice(1);
+                }
+
+                let userAnswerText = '';
+                if (Array.isArray(result.userAnswer)) {
+                    userAnswerText = result.userAnswer.length > 0 ? result.userAnswer.join(', ').toUpperCase() : 'No answer';
+                } else {
+                    userAnswerText = result.userAnswer ? result.userAnswer.charAt(0).toUpperCase() + result.userAnswer.slice(1) : 'No answer';
+                }
+
+                answerDiv.innerHTML = `
+                    <div><strong>Question ${result.question}:</strong> ${result.correct ? '✓ Correct' : '✗ Incorrect'}</div>
+                    <div>Your answer: ${userAnswerText}</div>
+                    <div>Correct answer: ${correctAnswerText}</div>
+                    <div class="answer-explanation">${result.explanation}</div>
+                `;
+                
+                answerKey.appendChild(answerDiv);
+            });
+
+            // Show results
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
