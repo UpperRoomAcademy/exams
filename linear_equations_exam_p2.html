@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Equations Exam - Part 2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .exam-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            border-color: #3498db;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+        }
+        
+        .question-number {
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.4;
+        }
+        
+        .choices {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .choices li {
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .choices li:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .choices input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .submit-container {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #ecf0f1;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #27ae60;
+        }
+        
+        .score {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .answer-key {
+            margin-top: 15px;
+        }
+        
+        .correct-answer {
+            color: #27ae60;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="exam-container">
+        <h1>Linear Equations Exam - Part 2</h1>
+        <p class="subtitle">Focus: Graphing Linear Equations (Calculation-Based)</p>
+        
+        <form id="examForm">
+            <!-- Question 1 -->
+            <div class="question">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">Find the x-intercept and y-intercept of the equation 3x - 4y = 12.</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q1" value="A"> A. x-intercept: (4, 0), y-intercept: (0, -3)</li>
+                    <li><input type="radio" name="q1" value="B"> B. x-intercept: (3, 0), y-intercept: (0, -4)</li>
+                    <li><input type="radio" name="q1" value="C"> C. x-intercept: (-4, 0), y-intercept: (0, 3)</li>
+                    <li><input type="radio" name="q1" value="D"> D. x-intercept: (2, 0), y-intercept: (0, -6)</li>
+                </ul>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">Calculate the slope between the points (-3, 7) and (5, -1).</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q2" value="A"> A. -2</li>
+                    <li><input type="radio" name="q2" value="B"> B. -1</li>
+                    <li><input type="radio" name="q2" value="C"> C. 1</li>
+                    <li><input type="radio" name="q2" value="D"> D. 2</li>
+                </ul>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">Write the equation of the line passing through points (2, 5) and (6, 13).</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q3" value="A"> A. y = 3x - 1</li>
+                    <li><input type="radio" name="q3" value="B"> B. y = 2x + 1</li>
+                    <li><input type="radio" name="q3" value="C"> C. y = 4x - 3</li>
+                    <li><input type="radio" name="q3" value="D"> D. y = x + 3</li>
+                </ul>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">Are the points A(-2, 1), B(0, 5), and C(3, 11) collinear? Calculate to determine.</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q4" value="A"> A. No, slopes are different</li>
+                    <li><input type="radio" name="q4" value="B"> B. Yes, all slopes equal 2</li>
+                    <li><input type="radio" name="q4" value="C"> C. Yes, all slopes equal 3</li>
+                    <li><input type="radio" name="q4" value="D"> D. No, only two slopes are equal</li>
+                </ul>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">Convert the point-slope form y - 8 = -3(x - 4) to slope-intercept form.</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q5" value="A"> A. y = -3x + 20</li>
+                    <li><input type="radio" name="q5" value="B"> B. y = -3x - 4</li>
+                    <li><input type="radio" name="q5" value="C"> C. y = 3x - 4</li>
+                    <li><input type="radio" name="q5" value="D"> D. y = -3x + 8</li>
+                </ul>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <div class="question-number">Question 6</div>
+                <div class="question-text">Convert 5x - 2y = 14 from standard form to slope-intercept form.</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q6" value="A"> A. y = -5/2x + 7</li>
+                    <li><input type="radio" name="q6" value="B"> B. y = 5/2x + 7</li>
+                    <li><input type="radio" name="q6" value="C"> C. y = 5/2x - 7</li>
+                    <li><input type="radio" name="q6" value="D"> D. y = -5/2x - 7</li>
+                </ul>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <div class="question-number">Question 7</div>
+                <div class="question-text">Using the equation y = -2x + 7, calculate the y-values when x = -1, x = 0, and x = 3. What are the coordinates?</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q7" value="A"> A. (-1, 9), (0, 7), (3, 1)</li>
+                    <li><input type="radio" name="q7" value="B"> B. (-1, 5), (0, 7), (3, -1)</li>
+                    <li><input type="radio" name="q7" value="C"> C. (-1, -9), (0, 7), (3, 13)</li>
+                    <li><input type="radio" name="q7" value="D"> D. (-1, 9), (0, -7), (3, 1)</li>
+                </ul>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <div class="question-number">Question 8</div>
+                <div class="question-text">What is the slope of a line parallel to the line 4x + 3y = 15?</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q8" value="A"> A. 4/3</li>
+                    <li><input type="radio" name="q8" value="B"> B. -4/3</li>
+                    <li><input type="radio" name="q8" value="C"> C. 3/4</li>
+                    <li><input type="radio" name="q8" value="D"> D. -3/4</li>
+                </ul>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <div class="question-number">Question 9</div>
+                <div class="question-text">Calculate the slope of a line perpendicular to y = 2/5x - 3.</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q9" value="A"> A. 2/5</li>
+                    <li><input type="radio" name="q9" value="B"> B. -2/5</li>
+                    <li><input type="radio" name="q9" value="C"> C. 5/2</li>
+                    <li><input type="radio" name="q9" value="D"> D. -5/2</li>
+                </ul>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <div class="question-number">Question 10</div>
+                <div class="question-text">A line passes through points (0, -2) and (4, 6). Calculate and write the equation of this line.</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q10" value="A"> A. y = 2x + 2</li>
+                    <li><input type="radio" name="q10" value="B"> B. y = 2x - 2</li>
+                    <li><input type="radio" name="q10" value="C"> C. y = -2x + 2</li>
+                    <li><input type="radio" name="q10" value="D"> D. y = 1/2x - 2</li>
+                </ul>
+            </div>
+
+            <!-- Question 11 (Sneaky Question) -->
+            <div class="question">
+                <div class="question-number">Question 11</div>
+                <div class="question-text">A line passes through the point (4, 5) and has a y-intercept. What is the equation of the line?</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q11" value="A"> A. y = 2x - 3</li>
+                    <li><input type="radio" name="q11" value="B"> B. y = 1/2x + 3</li>
+                    <li><input type="radio" name="q11" value="C"> C. y = -1/2x + 7</li>
+                    <li><input type="radio" name="q11" value="D"> D. y = x + 1</li>
+                </ul>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question">
+                <div class="question-number">Question 12</div>
+                <div class="question-text">Find the x-intercept of the line with equation 2x - 5y = -10.</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q12" value="A"> A. (-5, 0)</li>
+                    <li><input type="radio" name="q12" value="B"> B. (5, 0)</li>
+                    <li><input type="radio" name="q12" value="C"> C. (-2, 0)</li>
+                    <li><input type="radio" name="q12" value="D"> D. (10, 0)</li>
+                </ul>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question">
+                <div class="question-number">Question 13</div>
+                <div class="question-text">Calculate the slope between points (7, -4) and (-1, 12).</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q13" value="A"> A. 2</li>
+                    <li><input type="radio" name="q13" value="B"> B. -2</li>
+                    <li><input type="radio" name="q13" value="C"> C. 1/2</li>
+                    <li><input type="radio" name="q13" value="D"> D. -1/2</li>
+                </ul>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question">
+                <div class="question-number">Question 14</div>
+                <div class="question-text">Write the equation of the line passing through (-3, -1) and (1, 7).</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q14" value="A"> A. y = 2x + 5</li>
+                    <li><input type="radio" name="q14" value="B"> B. y = -2x + 5</li>
+                    <li><input type="radio" name="q14" value="C"> C. y = 3x + 8</li>
+                    <li><input type="radio" name="q14" value="D"> D. y = 1/2x + 1</li>
+                </ul>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question">
+                <div class="question-number">Question 15</div>
+                <div class="question-text">Convert y + 6 = 4(x - 2) from point-slope to slope-intercept form.</div>
+                <ul class="choices">
+                    <li><input type="radio" name="q15" value="A"> A. y = 4x + 2</li>
+                    <li><input type="radio" name="q15" value="B"> B. y = 4x - 14</li>
+                    <li><input type="radio" name="q15" value="C"> C. y = 4x - 2</li>
+                    <li><input type="radio" name="q15" value="D"> D. y = -4x + 2</li>
+                </ul>
+            </div>
+
+            <div class="submit-container">
+                <button type="button" class="submit-btn" onclick="gradeExam()">Submit Exam</button>
+            </div>
+        </form>
+
+        <div id="results" class="results hidden">
+            <div class="score" id="scoreDisplay"></div>
+            <div class="answer-key">
+                <h3>Answer Key:</h3>
+                <div id="answerKey"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'A',  // x-intercept: (4, 0), y-intercept: (0, -3)
+            q2: 'B',  // slope = -1
+            q3: 'B',  // y = 2x + 1
+            q4: 'B',  // Yes, all slopes equal 2
+            q5: 'A',  // y = -3x + 20
+            q6: 'C',  // y = 5/2x - 7
+            q7: 'A',  // (-1, 9), (0, 7), (3, 1)
+            q8: 'B',  // -4/3
+            q9: 'D',  // -5/2
+            q10: 'B', // y = 2x - 2
+            q11: 'A', // y = 2x - 3 (sneaky question - missing y-intercept value of -3)
+            q12: 'A', // (-5, 0)
+            q13: 'B', // -2
+            q14: 'A', // y = 2x + 5
+            q15: 'B'  // y = 4x - 14
+        };
+
+        const questionTexts = {
+            q1: "Find the x-intercept and y-intercept of the equation 3x - 4y = 12.",
+            q2: "Calculate the slope between the points (-3, 7) and (5, -1).",
+            q3: "Write the equation of the line passing through points (2, 5) and (6, 13).",
+            q4: "Are the points A(-2, 1), B(0, 5), and C(3, 11) collinear? Calculate to determine.",
+            q5: "Convert the point-slope form y - 8 = -3(x - 4) to slope-intercept form.",
+            q6: "Convert 5x - 2y = 14 from standard form to slope-intercept form.",
+            q7: "Using the equation y = -2x + 7, calculate the y-values when x = -1, x = 0, and x = 3. What are the coordinates?",
+            q8: "What is the slope of a line parallel to the line 4x + 3y = 15?",
+            q9: "Calculate the slope of a line perpendicular to y = 2/5x - 3.",
+            q10: "A line passes through points (0, -2) and (4, 6). Calculate and write the equation of this line.",
+            q11: "A line passes through the point (4, 5) and has a y-intercept. What is the equation of the line?",
+            q12: "Find the x-intercept of the line with equation 2x - 5y = -10.",
+            q13: "Calculate the slope between points (7, -4) and (-1, 12).",
+            q14: "Write the equation of the line passing through (-3, -1) and (1, 7).",
+            q15: "Convert y + 6 = 4(x - 2) from point-slope to slope-intercept form."
+        };
+
+        const answerChoices = {
+            q1: {A: "x-intercept: (4, 0), y-intercept: (0, -3)", B: "x-intercept: (3, 0), y-intercept: (0, -4)", C: "x-intercept: (-4, 0), y-intercept: (0, 3)", D: "x-intercept: (2, 0), y-intercept: (0, -6)"},
+            q2: {A: "-2", B: "-1", C: "1", D: "2"},
+            q3: {A: "y = 3x - 1", B: "y = 2x + 1", C: "y = 4x - 3", D: "y = x + 3"},
+            q4: {A: "No, slopes are different", B: "Yes, all slopes equal 2", C: "Yes, all slopes equal 3", D: "No, only two slopes are equal"},
+            q5: {A: "y = -3x + 20", B: "y = -3x - 4", C: "y = 3x - 4", D: "y = -3x + 8"},
+            q6: {A: "y = -5/2x + 7", B: "y = 5/2x + 7", C: "y = 5/2x - 7", D: "y = -5/2x - 7"},
+            q7: {A: "(-1, 9), (0, 7), (3, 1)", B: "(-1, 5), (0, 7), (3, -1)", C: "(-1, -9), (0, 7), (3, 13)", D: "(-1, 9), (0, -7), (3, 1)"},
+            q8: {A: "4/3", B: "-4/3", C: "3/4", D: "-3/4"},
+            q9: {A: "2/5", B: "-2/5", C: "5/2", D: "-5/2"},
+            q10: {A: "y = 2x + 2", B: "y = 2x - 2", C: "y = -2x + 2", D: "y = 1/2x - 2"},
+            q11: {A: "y = 2x - 3", B: "y = 1/2x + 3", C: "y = -1/2x + 7", D: "y = x + 1"},
+            q12: {A: "(-5, 0)", B: "(5, 0)", C: "(-2, 0)", D: "(10, 0)"},
+            q13: {A: "2", B: "-2", C: "1/2", D: "-1/2"},
+            q14: {A: "y = 2x + 5", B: "y = -2x + 5", C: "y = 3x + 8", D: "y = 1/2x + 1"},
+            q15: {A: "y = 4x + 2", B: "y = 4x - 14", C: "y = 4x - 2", D: "y = -4x + 2"}
+        };
+
+        function gradeExam() {
+            const form = document.getElementById('examForm');
+            const formData = new FormData(form);
+            let correctCount = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            
+            let answerKeyHTML = '';
+            
+            for (let question in correctAnswers) {
+                const userAnswer = formData.get(question);
+                const correctAnswer = correctAnswers[question];
+                const isCorrect = userAnswer === correctAnswer;
+                
+                if (isCorrect) {
+                    correctCount++;
+                }
+                
+                answerKeyHTML += `
+                    <div style="margin-bottom: 15px; padding: 10px; border-left: 3px solid ${isCorrect ? '#27ae60' : '#e74c3c'};">
+                        <strong>Question ${question.replace('q', '')}:</strong> ${questionTexts[question]}<br>
+                        <span class="correct-answer">✅ Correct Answer: ${correctAnswer}. ${answerChoices[question][correctAnswer]}</span>
+                        ${userAnswer ? `<br><span style="color: ${isCorrect ? '#27ae60' : '#e74c3c'};">Your Answer: ${userAnswer}. ${answerChoices[question][userAnswer]}</span>` : '<br><span style="color: #e74c3c;">Your Answer: Not answered</span>'}
+                    </div>
+                `;
+            }
+            
+            document.getElementById('scoreDisplay').innerHTML = `
+                Score: ${correctCount}/${totalQuestions} (${Math.round((correctCount/totalQuestions)*100)}%)
+            `;
+            
+            document.getElementById('answerKey').innerHTML = answerKeyHTML;
+            document.getElementById('results').classList.remove('hidden');
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
