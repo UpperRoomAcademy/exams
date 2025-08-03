@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Notation Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .quiz-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+        
+        .question {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .question h3 {
+            margin-top: 0;
+            color: #2d3748;
+            font-size: 1.1em;
+        }
+        
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            padding: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .results {
+            display: none;
+            background: #e6fffa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border-left: 4px solid #38b2ac;
+        }
+        
+        .score {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .correct {
+            color: #38a169;
+        }
+        
+        .incorrect {
+            color: #e53e3e;
+        }
+        
+        .question-review {
+            margin: 15px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Scientific Notation Quiz</h1>
+        <form id="quizForm">
+            <!-- Question 1 -->
+            <div class="question">
+                <h3>1. Convert 0.000000456 to scientific notation:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q1" value="a" id="q1a">
+                        <label for="q1a">4.56 × 10⁻⁷</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="b" id="q1b">
+                        <label for="q1b">4.56 × 10⁻⁶</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="c" id="q1c">
+                        <label for="q1c">45.6 × 10⁻⁸</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="d" id="q1d">
+                        <label for="q1d">4.56 × 10⁻⁸</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <h3>2. Convert 7.89 × 10⁹ to standard form:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q2" value="a" id="q2a">
+                        <label for="q2a">7,890,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="b" id="q2b">
+                        <label for="q2b">78,900,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="c" id="q2c">
+                        <label for="q2c">789,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="d" id="q2d">
+                        <label for="q2d">78,900,000</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <h3>3. Convert 234,000,000,000 to scientific notation:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q3" value="a" id="q3a">
+                        <label for="q3a">2.34 × 10¹¹</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="b" id="q3b">
+                        <label for="q3b">2.34 × 10¹⁰</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="c" id="q3c">
+                        <label for="q3c">23.4 × 10¹⁰</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="d" id="q3d">
+                        <label for="q3d">2.34 × 10¹²</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <h3>4. Convert 3.45 × 10⁻¹² to standard form:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q4" value="a" id="q4a">
+                        <label for="q4a">0.00000000000345</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="b" id="q4b">
+                        <label for="q4b">0.0000000000345</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="c" id="q4c">
+                        <label for="q4c">0.000000000345</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="d" id="q4d">
+                        <label for="q4d">3.45</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <h3>5. Convert 0.0000000298 to scientific notation:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q5" value="a" id="q5a">
+                        <label for="q5a">2.98 × 10⁻⁸</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="b" id="q5b">
+                        <label for="q5b">2.98 × 10⁻⁹</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="c" id="q5c">
+                        <label for="q5c">29.8 × 10⁻⁹</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="d" id="q5d">
+                        <label for="q5d">2.98 × 10⁻⁷</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <h3>6. Convert 6.72 × 10¹⁵ to standard form:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q6" value="a" id="q6a">
+                        <label for="q6a">6,720,000,000,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="b" id="q6b">
+                        <label for="q6b">67,200,000,000,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="c" id="q6c">
+                        <label for="q6c">672,000,000,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="d" id="q6d">
+                        <label for="q6d">6,720,000,000,000</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <h3>7. Convert 892,000,000,000,000 to scientific notation:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q7" value="a" id="q7a">
+                        <label for="q7a">8.92 × 10¹⁴</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="b" id="q7b">
+                        <label for="q7b">8.92 × 10¹³</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="c" id="q7c">
+                        <label for="q7c">89.2 × 10¹³</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="d" id="q7d">
+                        <label for="q7d">8.92 × 10¹⁵</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <h3>8. Convert 1.23 × 10⁻¹⁴ to standard form:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q8" value="a" id="q8a">
+                        <label for="q8a">0.0000000000000123</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="b" id="q8b">
+                        <label for="q8b">0.000000000000123</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="c" id="q8c">
+                        <label for="q8c">0.00000000000123</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="d" id="q8d">
+                        <label for="q8d">0.0000000000123</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <h3>9. Convert 0.000000000000567 to scientific notation:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q9" value="a" id="q9a">
+                        <label for="q9a">5.67 × 10⁻¹³</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="b" id="q9b">
+                        <label for="q9b">5.67 × 10⁻¹²</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="c" id="q9c">
+                        <label for="q9c">56.7 × 10⁻¹⁴</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="d" id="q9d">
+                        <label for="q9d">5.67 × 10⁻¹¹</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <h3>10. Convert 9.87 × 10¹⁸ to standard form:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q10" value="a" id="q10a">
+                        <label for="q10a">9,870,000,000,000,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q10" value="b" id="q10b">
+                        <label for="q10b">98,700,000,000,000,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q10" value="c" id="q10c">
+                        <label for="q10c">987,000,000,000,000,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q10" value="d" id="q10d">
+                        <label for="q10d">9,870,000,000,000,000</label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Quiz</button>
+        </form>
+
+        <div id="results" class="results">
+            <div id="scoreDisplay" class="score"></div>
+            <div id="reviewSection"></div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'a', // 4.56 × 10⁻⁷
+            q2: 'a', // 7,890,000,000
+            q3: 'a', // 2.34 × 10¹¹
+            q4: 'a', // 0.00000000000345
+            q5: 'a', // 2.98 × 10⁻⁸
+            q6: 'a', // 6,720,000,000,000,000
+            q7: 'a', // 8.92 × 10¹⁴
+            q8: 'a', // 0.0000000000000123
+            q9: 'a', // 5.67 × 10⁻¹³
+            q10: 'a'  // 9,870,000,000,000,000,000
+        };
+
+        const questions = [
+            "Convert 0.000000456 to scientific notation:",
+            "Convert 7.89 × 10⁹ to standard form:",
+            "Convert 234,000,000,000 to scientific notation:",
+            "Convert 3.45 × 10⁻¹² to standard form:",
+            "Convert 0.0000000298 to scientific notation:",
+            "Convert 6.72 × 10¹⁵ to standard form:",
+            "Convert 892,000,000,000,000 to scientific notation:",
+            "Convert 1.23 × 10⁻¹⁴ to standard form:",
+            "Convert 0.000000000000567 to scientific notation:",
+            "Convert 9.87 × 10¹⁸ to standard form:"
+        ];
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            let reviewHTML = '';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const isCorrect = selectedAnswer && selectedAnswer.value === correctAnswers[questionName];
+                
+                if (isCorrect) {
+                    score++;
+                }
+
+                const statusClass = isCorrect ? 'correct' : 'incorrect';
+                const statusText = isCorrect ? '✓ Correct' : '✗ Incorrect';
+                const correctAnswerText = document.querySelector(`#${questionName}${correctAnswers[questionName]} + label`).textContent;
+                
+                reviewHTML += `
+                    <div class="question-review">
+                        <strong>Question ${i}:</strong> ${questions[i-1]}<br>
+                        <span class="${statusClass}">${statusText}</span><br>
+                        <strong>Correct Answer:</strong> ${correctAnswerText}
+                        ${selectedAnswer ? `<br><strong>Your Answer:</strong> ${document.querySelector(`#${questionName}${selectedAnswer.value} + label`).textContent}` : '<br><strong>Your Answer:</strong> No answer selected'}
+                    </div>
+                `;
+            }
+
+            const percentage = Math.round((score / totalQuestions) * 100);
+            let scoreMessage = `You scored ${score} out of ${totalQuestions} (${percentage}%)`;
+            
+            if (percentage >= 90) scoreMessage += " - Excellent!";
+            else if (percentage >= 80) scoreMessage += " - Great job!";
+            else if (percentage >= 70) scoreMessage += " - Good work!";
+            else if (percentage >= 60) scoreMessage += " - Keep practicing!";
+            else scoreMessage += " - Review the concepts and try again!";
+
+            document.getElementById('scoreDisplay').innerHTML = scoreMessage;
+            document.getElementById('reviewSection').innerHTML = reviewHTML;
+            document.getElementById('results').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
