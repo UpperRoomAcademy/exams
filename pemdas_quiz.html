@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEMDAS Multiple Choice Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .quiz-container {
+            padding: 30px;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 5px solid #4facfe;
+            transition: transform 0.2s ease;
+        }
+        
+        .question:hover {
+            transform: translateY(-2px);
+        }
+        
+        .question h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .expression {
+            font-family: 'Courier New', monospace;
+            font-size: 1.4em;
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .options {
+            display: grid;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #e0e6ed;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+        
+        .option:hover {
+            border-color: #4facfe;
+            background: #f0f8ff;
+            transform: translateX(5px);
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 12px;
+            transform: scale(1.2);
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+        
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        
+        .score {
+            font-size: 2em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+            text-align: left;
+            font-size: 0.95em;
+            display: none;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .hard {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧮 PEMDAS Quiz Challenge</h1>
+            <p>Test your order of operations skills with these arithmetic problems!</p>
+        </div>
+        
+        <div class="quiz-container">
+            <form id="quizForm">
+                <!-- Question 1 -->
+                <div class="question">
+                    <span class="difficulty intermediate">Intermediate</span>
+                    <h3>Question 1</h3>
+                    <div class="expression">8 + 3 × (12 - 7) ÷ 2</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            <span>15.5</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            <span>27.5</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            <span>15.5</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            <span>15.5</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 8 + 3 × (12 - 7) ÷ 2 = 8 + 3 × 5 ÷ 2 = 8 + 15 ÷ 2 = 8 + 7.5 = 15.5
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question">
+                    <span class="difficulty hard">Hard</span>
+                    <h3>Question 2</h3>
+                    <div class="expression">4² - 3 × (8 - 2²) + 10 ÷ 2</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            <span>9</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            <span>13</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            <span>17</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            <span>25</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 4² - 3 × (8 - 2²) + 10 ÷ 2 = 16 - 3 × (8 - 4) + 5 = 16 - 3 × 4 + 5 = 16 - 12 + 5 = 9
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question">
+                    <span class="difficulty intermediate">Intermediate</span>
+                    <h3>Question 3</h3>
+                    <div class="expression">24 ÷ 6 + 3 × 4 - 2</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            <span>14</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            <span>26</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            <span>18</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            <span>10</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 24 ÷ 6 + 3 × 4 - 2 = 4 + 12 - 2 = 14
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question">
+                    <span class="difficulty hard">Hard</span>
+                    <h3>Question 4</h3>
+                    <div class="expression">5 + 2³ × (15 - 3²) ÷ 4</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            <span>17</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            <span>23</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            <span>29</span>
+                        </label>
+                        <label class="option">
+                            <span>17</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 5 + 2³ × (15 - 3²) ÷ 4 = 5 + 8 × (15 - 9) ÷ 4 = 5 + 8 × 6 ÷ 4 = 5 + 48 ÷ 4 = 5 + 12 = 17
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="question">
+                    <span class="difficulty intermediate">Intermediate</span>
+                    <h3>Question 5</h3>
+                    <div class="expression">18 - 6 ÷ 2 + 4 × 3</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            <span>27</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            <span>21</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            <span>33</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            <span>15</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 18 - 6 ÷ 2 + 4 × 3 = 18 - 3 + 12 = 27
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="question">
+                    <span class="difficulty hard">Hard</span>
+                    <h3>Question 6</h3>
+                    <div class="expression">3² + 4 × (7 - 2) - 8 ÷ 2²</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            <span>27</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            <span>23</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            <span>27</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            <span>31</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 3² + 4 × (7 - 2) - 8 ÷ 2² = 9 + 4 × 5 - 8 ÷ 4 = 9 + 20 - 2 = 27
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="question">
+                    <span class="difficulty intermediate">Intermediate</span>
+                    <h3>Question 7</h3>
+                    <div class="expression">(16 + 4) ÷ 5 × 3 + 7</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            <span>19</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            <span>15</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            <span>11</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            <span>23</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> (16 + 4) ÷ 5 × 3 + 7 = 20 ÷ 5 × 3 + 7 = 4 × 3 + 7 = 12 + 7 = 19
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="question">
+                    <span class="difficulty hard">Hard</span>
+                    <h3>Question 8</h3>
+                    <div class="expression">6² ÷ 3 + 2 × (11 - 4²) + 5</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q8" value="a">
+                            <span>7</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="b">
+                            <span>-3</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="c">
+                            <span>27</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q8" value="d">
+                            <span>15</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 6² ÷ 3 + 2 × (11 - 4²) + 5 = 36 ÷ 3 + 2 × (11 - 16) + 5 = 12 + 2 × (-5) + 5 = 12 - 10 + 5 = 7
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="question">
+                    <span class="difficulty intermediate">Intermediate</span>
+                    <h3>Question 9</h3>
+                    <div class="expression">15 × 2 - 8 + 12 ÷ 4</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q9" value="a">
+                            <span>25</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="b">
+                            <span>19</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="c">
+                            <span>31</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q9" value="d">
+                            <span>25</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 15 × 2 - 8 + 12 ÷ 4 = 30 - 8 + 3 = 25
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="question">
+                    <span class="difficulty hard">Hard</span>
+                    <h3>Question 10</h3>
+                    <div class="expression">2 × 3² + (20 - 4²) ÷ 2 - 5</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q10" value="a">
+                            <span>15</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="b">
+                            <span>17</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="c">
+                            <span>23</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q10" value="d">
+                            <span>19</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 2 × 3² + (20 - 4²) ÷ 2 - 5 = 2 × 9 + (20 - 16) ÷ 2 - 5 = 18 + 4 ÷ 2 - 5 = 18 + 2 - 5 = 15
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="question">
+                    <span class="difficulty hard">Hard</span>
+                    <h3>Question 11</h3>
+                    <div class="expression">5³ ÷ 5 + 4 × (6 - 2) - 3²</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q11" value="a">
+                            <span>22</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="b">
+                            <span>16</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="c">
+                            <span>32</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q11" value="d">
+                            <span>28</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 5³ ÷ 5 + 4 × (6 - 2) - 3² = 125 ÷ 5 + 4 × 4 - 9 = 25 + 16 - 9 = 32
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="question">
+                    <span class="difficulty hard">Hard</span>
+                    <h3>Question 12</h3>
+                    <div class="expression">8 + 3 × 2² - (14 - 6) ÷ 4 + 1</div>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q12" value="a">
+                            <span>19</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="b">
+                            <span>27</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="c">
+                            <span>21</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q12" value="d">
+                            <span>23</span>
+                        </label>
+                    </div>
+                    <div class="explanation">
+                        <strong>Solution:</strong> 8 + 3 × 2² - (14 - 6) ÷ 4 + 1 = 8 + 3 × 4 - 8 ÷ 4 + 1 = 8 + 12 - 2 + 1 = 19
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Quiz</button>
+            </form>
+
+            <div class="results" id="results">
+                <div class="score" id="score"></div>
+                <p id="message"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'a', // 15.5
+            q2: 'a', // 9
+            q3: 'a', // 14
+            q4: 'a', // 17
+            q5: 'a', // 27
+            q6: 'a', // 27
+            q7: 'a', // 19
+            q8: 'a', // 7
+            q9: 'a', // 25
+            q10: 'a', // 15
+            q11: 'c', // 32
+            q12: 'a'  // 19
+        };
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let score = 0;
+            const totalQuestions = 12;
+            
+            // Check answers and show explanations
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = `q${i}`;
+                const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const options = document.querySelectorAll(`input[name="${questionName}"]`);
+                const explanation = document.querySelector(`.question:nth-child(${i}) .explanation`);
+                
+                if (selectedAnswer) {
+                    if (selectedAnswer.value === correctAnswers[questionName]) {
+                        score++;
+                        selectedAnswer.closest('.option').classList.add('correct');
+                    } else {
+                        selectedAnswer.closest('.option').classList.add('incorrect');
+                        // Also highlight the correct answer
+                        options.forEach(option => {
+                            if (option.value === correctAnswers[questionName]) {
+                                option.closest('.option').classList.add('correct');
+                            }
+                        });
+                    }
+                } else {
+                    // Show correct answer if nothing was selected
+                    options.forEach(option => {
+                        if (option.value === correctAnswers[questionName]) {
+                            option.closest('.option').classList.add('correct');
+                        }
+                    });
+                }
+                
+                explanation.style.display = 'block';
+            }
+            
+            // Show results
+            const percentage = Math.round((score / totalQuestions) * 100);
+            document.getElementById('score').textContent = `${score}/${totalQuestions} (${percentage}%)`;
+            
+            let message = '';
+            if (percentage >= 90) {
+                message = 'Outstanding! You\'ve mastered PEMDAS!';
+            } else if (percentage >= 80) {
+                message = 'Great job! You have a solid understanding of order of operations.';
+            } else if (percentage >= 70) {
+                message = 'Good work! Keep practicing to improve your skills.';
+            } else if (percentage >= 60) {
+                message = 'Not bad! Review the explanations and try again.';
+            } else {
+                message = 'Keep practicing! PEMDAS takes time to master.';
+            }
+            
+            document.getElementById('message').textContent = message;
+            document.getElementById('results').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            
+            // Hide submit button
+            document.querySelector('.submit-btn').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
