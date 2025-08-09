@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Exam: Perimeter and Area</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .formulas {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+        }
+        
+        .formulas h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .formula-section {
+            margin-bottom: 15px;
+        }
+        
+        .question {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .shape-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        
+        .options {
+            margin-top: 15px;
+        }
+        
+        .options label {
+            display: block;
+            margin: 8px 0;
+            padding: 8px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .options label:hover {
+            background-color: #e9ecef;
+        }
+        
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+        
+        .submit-btn {
+            background-color: #27ae60;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #219a52;
+        }
+        
+        .results {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        
+        .results.fail {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        svg {
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Geometry Exam: Perimeter and Area</h1>
+        <p>Test your knowledge of finding perimeter and area for basic shapes</p>
+    </div>
+
+    <div class="formulas">
+        <h3>📐 Reference Formulas</h3>
+        <div class="formula-section">
+            <strong>Square:</strong><br>
+            • Perimeter = 4 × side<br>
+            • Area = side × side
+        </div>
+        <div class="formula-section">
+            <strong>Rectangle:</strong><br>
+            • Perimeter = 2 × (length + width)<br>
+            • Area = length × width
+        </div>
+        <div class="formula-section">
+            <strong>Triangle:</strong><br>
+            • Perimeter = side₁ + side₂ + side₃<br>
+            • Area = ½ × base × height
+        </div>
+    </div>
+
+    <form id="examForm">
+        <!-- Question 1 -->
+        <div class="question">
+            <h3>Question 1</h3>
+            <div class="shape-container">
+                <svg width="120" height="120">
+                    <rect x="20" y="20" width="80" height="80" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+                    <text x="60" y="105" text-anchor="middle" font-size="12">6 cm</text>
+                    <text x="8" y="65" text-anchor="middle" font-size="12" transform="rotate(-90 8 65)">6 cm</text>
+                </svg>
+                <p><strong>What is the perimeter of this square?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> 12 cm</label>
+                <label><input type="radio" name="q1" value="b"> 18 cm</label>
+                <label><input type="radio" name="q1" value="c"> 24 cm</label>
+                <label><input type="radio" name="q1" value="d"> 36 cm</label>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question">
+            <h3>Question 2</h3>
+            <div class="shape-container">
+                <svg width="120" height="120">
+                    <rect x="20" y="20" width="80" height="80" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+                    <text x="60" y="105" text-anchor="middle" font-size="12">5 cm</text>
+                    <text x="8" y="65" text-anchor="middle" font-size="12" transform="rotate(-90 8 65)">5 cm</text>
+                </svg>
+                <p><strong>What is the area of this square?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> 10 cm²</label>
+                <label><input type="radio" name="q2" value="b"> 20 cm²</label>
+                <label><input type="radio" name="q2" value="c"> 25 cm²</label>
+                <label><input type="radio" name="q2" value="d"> 30 cm²</label>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question">
+            <h3>Question 3</h3>
+            <div class="shape-container">
+                <svg width="140" height="100">
+                    <rect x="20" y="25" width="100" height="50" fill="#2ecc71" stroke="#27ae60" stroke-width="2"/>
+                    <text x="70" y="90" text-anchor="middle" font-size="12">8 cm</text>
+                    <text x="8" y="53" text-anchor="middle" font-size="12" transform="rotate(-90 8 53)">4 cm</text>
+                </svg>
+                <p><strong>What is the perimeter of this rectangle?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> 12 cm</label>
+                <label><input type="radio" name="q3" value="b"> 16 cm</label>
+                <label><input type="radio" name="q3" value="c"> 24 cm</label>
+                <label><input type="radio" name="q3" value="d"> 32 cm</label>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question">
+            <h3>Question 4</h3>
+            <div class="shape-container">
+                <svg width="140" height="100">
+                    <rect x="20" y="25" width="100" height="50" fill="#f39c12" stroke="#e67e22" stroke-width="2"/>
+                    <text x="70" y="90" text-anchor="middle" font-size="12">7 cm</text>
+                    <text x="8" y="53" text-anchor="middle" font-size="12" transform="rotate(-90 8 53)">3 cm</text>
+                </svg>
+                <p><strong>What is the area of this rectangle?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a"> 10 cm²</label>
+                <label><input type="radio" name="q4" value="b"> 20 cm²</label>
+                <label><input type="radio" name="q4" value="c"> 21 cm²</label>
+                <label><input type="radio" name="q4" value="d"> 24 cm²</label>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question">
+            <h3>Question 5</h3>
+            <div class="shape-container">
+                <svg width="120" height="120">
+                    <polygon points="60,20 20,100 100,100" fill="#9b59b6" stroke="#8e44ad" stroke-width="2"/>
+                    <text x="35" y="115" font-size="12">6 cm</text>
+                    <text x="85" y="60" font-size="12">5 cm</text>
+                    <text x="25" y="60" font-size="12">5 cm</text>
+                </svg>
+                <p><strong>What is the perimeter of this triangle?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a"> 11 cm</label>
+                <label><input type="radio" name="q5" value="b"> 15 cm</label>
+                <label><input type="radio" name="q5" value="c"> 16 cm</label>
+                <label><input type="radio" name="q5" value="d"> 18 cm</label>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question">
+            <h3>Question 6</h3>
+            <div class="shape-container">
+                <svg width="120" height="120">
+                    <polygon points="60,20 20,100 100,100" fill="#1abc9c" stroke="#16a085" stroke-width="2"/>
+                    <text x="45" y="115" font-size="12">base: 8 cm</text>
+                    <text x="35" y="55" font-size="12">height: 6 cm</text>
+                    <line x1="60" y1="20" x2="60" y2="100" stroke="#34495e" stroke-width="1" stroke-dasharray="2,2"/>
+                </svg>
+                <p><strong>What is the area of this triangle?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="a"> 14 cm²</label>
+                <label><input type="radio" name="q6" value="b"> 24 cm²</label>
+                <label><input type="radio" name="q6" value="c"> 48 cm²</label>
+                <label><input type="radio" name="q6" value="d"> 28 cm²</label>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question">
+            <h3>Question 7</h3>
+            <div class="shape-container">
+                <svg width="120" height="120">
+                    <rect x="20" y="30" width="80" height="80" fill="#e67e22" stroke="#d35400" stroke-width="2"/>
+                    <text x="60" y="125" text-anchor="middle" font-size="12">9 cm</text>
+                    <text x="8" y="75" text-anchor="middle" font-size="12" transform="rotate(-90 8 75)">9 cm</text>
+                </svg>
+                <p><strong>What is the area of this square?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q7" value="a"> 18 cm²</label>
+                <label><input type="radio" name="q7" value="b"> 36 cm²</label>
+                <label><input type="radio" name="q7" value="c"> 81 cm²</label>
+                <label><input type="radio" name="q7" value="d"> 72 cm²</label>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question">
+            <h3>Question 8</h3>
+            <div class="shape-container">
+                <svg width="160" height="100">
+                    <rect x="20" y="25" width="120" height="50" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+                    <text x="80" y="90" text-anchor="middle" font-size="12">10 cm</text>
+                    <text x="8" y="53" text-anchor="middle" font-size="12" transform="rotate(-90 8 53)">4 cm</text>
+                </svg>
+                <p><strong>What is the perimeter of this rectangle?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="a"> 14 cm</label>
+                <label><input type="radio" name="q8" value="b"> 20 cm</label>
+                <label><input type="radio" name="q8" value="c"> 28 cm</label>
+                <label><input type="radio" name="q8" value="d"> 40 cm</label>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="question">
+            <h3>Question 9</h3>
+            <div class="shape-container">
+                <svg width="140" height="120">
+                    <polygon points="70,20 25,100 115,100" fill="#c0392b" stroke="#a93226" stroke-width="2"/>
+                    <text x="45" y="115" font-size="12">base: 12 cm</text>
+                    <text x="40" y="55" font-size="12">height: 8 cm</text>
+                    <line x1="70" y1="20" x2="70" y2="100" stroke="#34495e" stroke-width="1" stroke-dasharray="2,2"/>
+                </svg>
+                <p><strong>What is the area of this triangle?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="a"> 20 cm²</label>
+                <label><input type="radio" name="q9" value="b"> 48 cm²</label>
+                <label><input type="radio" name="q9" value="c"> 96 cm²</label>
+                <label><input type="radio" name="q9" value="d"> 40 cm²</label>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question">
+            <h3>Question 10</h3>
+            <div class="shape-container">
+                <svg width="140" height="120">
+                    <rect x="25" y="25" width="90" height="70" fill="#8e44ad" stroke="#7d3c98" stroke-width="2"/>
+                    <text x="70" y="110" text-anchor="middle" font-size="12">6 cm</text>
+                    <text x="12" y="65" text-anchor="middle" font-size="12" transform="rotate(-90 12 65)">5 cm</text>
+                </svg>
+                <p><strong>What is the area of this rectangle?</strong></p>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="a"> 11 cm²</label>
+                <label><input type="radio" name="q10" value="b"> 22 cm²</label>
+                <label><input type="radio" name="q10" value="c"> 30 cm²</label>
+                <label><input type="radio" name="q10" value="d"> 25 cm²</label>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Exam</button>
+    </form>
+
+    <div id="results" class="results"></div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'c', // Square perimeter: 4 × 6 = 24 cm
+            q2: 'c', // Square area: 5 × 5 = 25 cm²
+            q3: 'c', // Rectangle perimeter: 2 × (8 + 4) = 24 cm
+            q4: 'c', // Rectangle area: 7 × 3 = 21 cm²
+            q5: 'c', // Triangle perimeter: 5 + 5 + 6 = 16 cm
+            q6: 'b', // Triangle area: ½ × 8 × 6 = 24 cm²
+            q7: 'c', // Square area: 9 × 9 = 81 cm²
+            q8: 'c', // Rectangle perimeter: 2 × (10 + 4) = 28 cm
+            q9: 'b', // Triangle area: ½ × 12 × 8 = 48 cm²
+            q10: 'c' // Rectangle area: 6 × 5 = 30 cm²
+        };
+
+        document.getElementById('examForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            
+            for (let question in correctAnswers) {
+                if (formData.get(question) === correctAnswers[question]) {
+                    score++;
+                }
+            }
+            
+            const percentage = Math.round((score / totalQuestions) * 100);
+            const resultsDiv = document.getElementById('results');
+            
+            let message = `<h3>Exam Results</h3>`;
+            message += `<p>You scored ${score} out of ${totalQuestions} questions correctly!</p>`;
+            message += `<p><strong>Your grade: ${percentage}%</strong></p>`;
+            
+            if (percentage >= 80) {
+                message += `<p>🎉 Excellent work! You have a strong understanding of perimeter and area!</p>`;
+                resultsDiv.className = 'results';
+            } else if (percentage >= 60) {
+                message += `<p>👍 Good job! Review the formulas and try some practice problems.</p>`;
+                resultsDiv.className = 'results';
+            } else {
+                message += `<p>📚 Keep practicing! Review the formulas and work through more examples.</p>`;
+                resultsDiv.className = 'results fail';
+            }
+            
+            resultsDiv.innerHTML = message;
+            resultsDiv.style.display = 'block';
+            
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
