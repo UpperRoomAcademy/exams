@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle and Semicircle Exam</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .formulas {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+        
+        .formulas h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        
+        .formula-section {
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+        }
+        
+        .question {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            border-color: #007bff;
+            box-shadow: 0 5px 15px rgba(0,123,255,0.1);
+        }
+        
+        .question h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        
+        .question-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .graphic {
+            flex-shrink: 0;
+        }
+        
+        .options {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .option {
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .option:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 8px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .result {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .result.excellent {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .result.good {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+        
+        .result.needs-improvement {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+        }
+        
+        svg {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🟢 Circle & Semicircle Exam</h1>
+        
+        <div class="formulas">
+            <h2>📐 Important Formulas</h2>
+            <div class="formula-section">
+                <strong>Circle:</strong><br>
+                Area = π × r² &nbsp;&nbsp;&nbsp; Circumference = 2 × π × r
+            </div>
+            <div class="formula-section">
+                <strong>Semicircle:</strong><br>
+                Area = (π × r²) ÷ 2 &nbsp;&nbsp;&nbsp; Perimeter = π × r + 2 × r
+            </div>
+            <div style="font-size: 0.9em; margin-top: 10px;">
+                Use π ≈ 3.14 for calculations
+            </div>
+        </div>
+        
+        <form id="examForm">
+            <!-- Question 1 -->
+            <div class="question">
+                <h3>Question 1: Find the circumference of this circle</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="40" fill="lightblue" stroke="blue" stroke-width="2"/>
+                            <line x1="60" y1="60" x2="100" y2="60" stroke="red" stroke-width="2"/>
+                            <text x="75" y="55" fill="red" font-size="12">r = 5</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q1" value="a"> A) 25.12
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="b"> B) 31.4
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="c"> C) 15.7
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="d"> D) 78.5
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <h3>Question 2: Find the area of this circle</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="30" fill="lightgreen" stroke="green" stroke-width="2"/>
+                            <line x1="60" y1="60" x2="90" y2="60" stroke="red" stroke-width="2"/>
+                            <text x="70" y="55" fill="red" font-size="12">r = 3</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q2" value="a"> A) 18.84
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="b"> B) 28.26
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="c"> C) 9.42
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="d"> D) 6.28
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <h3>Question 3: Find the circumference of this circle (diameter given)</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="140" height="120">
+                            <circle cx="70" cy="60" r="45" fill="lightyellow" stroke="orange" stroke-width="2"/>
+                            <line x1="25" y1="60" x2="115" y2="60" stroke="red" stroke-width="2"/>
+                            <text x="65" y="50" fill="red" font-size="12">d = 8</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q3" value="a"> A) 25.12
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="b"> B) 50.24
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="c"> C) 12.56
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="d"> D) 16.48
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <h3>Question 4: Find the area of this semicircle</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="80">
+                            <path d="M 20 60 A 40 40 0 0 1 100 60 Z" fill="lightcoral" stroke="red" stroke-width="2"/>
+                            <line x1="60" y1="60" x2="100" y2="60" stroke="blue" stroke-width="2"/>
+                            <text x="75" y="55" fill="blue" font-size="12">r = 4</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q4" value="a"> A) 50.24
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="b"> B) 25.12
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="c"> C) 12.56
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="d"> D) 6.28
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question">
+                <h3>Question 5: Find the perimeter of this semicircle</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="80">
+                            <path d="M 30 60 A 30 30 0 0 1 90 60 Z" fill="lightpink" stroke="purple" stroke-width="2"/>
+                            <line x1="60" y1="60" x2="90" y2="60" stroke="blue" stroke-width="2"/>
+                            <text x="70" y="55" fill="blue" font-size="12">r = 6</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q5" value="a"> A) 18.84
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="b"> B) 37.68
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="c"> C) 30.84
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="d"> D) 24.28
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question">
+                <h3>Question 6: Find the area of this circle</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="35" fill="lavender" stroke="navy" stroke-width="2"/>
+                            <line x1="60" y1="60" x2="95" y2="60" stroke="red" stroke-width="2"/>
+                            <text x="72" y="55" fill="red" font-size="12">r = 7</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q6" value="a"> A) 43.96
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="b"> B) 153.86
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="c"> C) 21.98
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="d"> D) 87.92
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question">
+                <h3>Question 7: Find the circumference of this circle (diameter given)</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="40" fill="lightsteelblue" stroke="steelblue" stroke-width="2"/>
+                            <line x1="20" y1="60" x2="100" y2="60" stroke="red" stroke-width="2"/>
+                            <text x="55" y="50" fill="red" font-size="12">d = 10</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q7" value="a"> A) 62.8
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="b"> B) 31.4
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="c"> C) 15.7
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="d"> D) 78.5
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question">
+                <h3>Question 8: Find the area of this semicircle</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="70">
+                            <path d="M 30 55 A 25 25 0 0 1 80 55 Z" fill="peachpuff" stroke="darkorange" stroke-width="2"/>
+                            <line x1="55" y1="55" x2="80" y2="55" stroke="blue" stroke-width="2"/>
+                            <text x="62" y="50" fill="blue" font-size="12">r = 2</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q8" value="a"> A) 12.56
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="b"> B) 6.28
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="c"> C) 3.14
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="d"> D) 25.12
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question">
+                <h3>Question 9: Find the circumference of this circle</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="120">
+                            <circle cx="60" cy="60" r="20" fill="lightcyan" stroke="darkcyan" stroke-width="2"/>
+                            <line x1="60" y1="60" x2="80" y2="60" stroke="red" stroke-width="2"/>
+                            <text x="65" y="55" fill="red" font-size="12">r = 1</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q9" value="a"> A) 3.14
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q9" value="b"> B) 6.28
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q9" value="c"> C) 12.56
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q9" value="d"> D) 1.57
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question">
+                <h3>Question 10: Find the perimeter of this semicircle</h3>
+                <div class="question-content">
+                    <div class="graphic">
+                        <svg width="120" height="80">
+                            <path d="M 20 60 A 40 40 0 0 1 100 60 Z" fill="mistyrose" stroke="crimson" stroke-width="2"/>
+                            <line x1="60" y1="60" x2="100" y2="60" stroke="blue" stroke-width="2"/>
+                            <text x="75" y="55" fill="blue" font-size="12">r = 8</text>
+                        </svg>
+                    </div>
+                    <div class="options">
+                        <div class="option">
+                            <input type="radio" name="q10" value="a"> A) 50.24
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q10" value="b"> B) 25.12
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q10" value="c"> C) 41.12
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q10" value="d"> D) 33.12
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="gradeExam()">Submit Exam</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // Correct answers
+        const correctAnswers = {
+            q1: 'b',  // 2 * 3.14 * 5 = 31.4
+            q2: 'b',  // 3.14 * 3² = 28.26
+            q3: 'a',  // 3.14 * 8 = 25.12
+            q4: 'b',  // (3.14 * 4²) / 2 = 25.12
+            q5: 'c',  // (3.14 * 6) + (2 * 6) = 18.84 + 12 = 30.84
+            q6: 'b',  // 3.14 * 7² = 153.86
+            q7: 'b',  // 3.14 * 10 = 31.4
+            q8: 'b',  // (3.14 * 2²) / 2 = 6.28
+            q9: 'b',  // 2 * 3.14 * 1 = 6.28
+            q10: 'c' // (3.14 * 8) + (2 * 8) = 25.12 + 16 = 41.12
+        };
+
+        function gradeExam() {
+            let score = 0;
+            let totalQuestions = 10;
+
+            // Check each answer
+            for (let i = 1; i <= totalQuestions; i++) {
+                const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedAnswer && selectedAnswer.value === correctAnswers[`q${i}`]) {
+                    score++;
+                }
+            }
+
+            // Calculate percentage
+            const percentage = (score / totalQuestions) * 100;
+
+            // Display result
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+
+            let resultClass = '';
+            let message = '';
+
+            if (percentage >= 90) {
+                resultClass = 'excellent';
+                message = `🎉 Excellent! You scored ${score}/${totalQuestions} (${percentage}%)`;
+            } else if (percentage >= 70) {
+                resultClass = 'good';
+                message = `👍 Good job! You scored ${score}/${totalQuestions} (${percentage}%)`;
+            } else {
+                resultClass = 'needs-improvement';
+                message = `📚 Keep practicing! You scored ${score}/${totalQuestions} (${percentage}%)`;
+            }
+
+            resultDiv.className = `result ${resultClass}`;
+            resultDiv.innerHTML = message;
+
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
