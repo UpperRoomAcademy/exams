@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exponent Rules Exam</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .exam-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.2em;
+        }
+        
+        .instructions {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: #fafbfc;
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+        
+        .question-header {
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .easy {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .expression {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            background: #f1f3f4;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+        
+        .options {
+            margin-top: 15px;
+        }
+        
+        .option {
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .option:hover {
+            background: #e9ecef;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .option label {
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+        
+        .submit-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        #submitBtn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        #submitBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        #submitBtn:active {
+            transform: translateY(0);
+        }
+        
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .score-excellent {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+        }
+        
+        .score-good {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+        }
+        
+        .score-fair {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+        }
+        
+        .score-needs-improvement {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+        }
+        
+        sup {
+            font-size: 0.8em;
+            vertical-align: super;
+        }
+    </style>
+</head>
+<body>
+    <div class="exam-container">
+        <h1>📚 Exponent Rules Exam</h1>
+        <div class="instructions">
+            Complete all 7 questions and click Submit to see your score.<br>
+            Remember to follow the order of operations (PEMDAS)!
+        </div>
+        
+        <form id="examForm">
+            <!-- Question 1: Easy -->
+            <div class="question">
+                <div class="question-header">
+                    Question 1 <span class="difficulty easy">EASY</span>
+                </div>
+                <div class="expression">2<sup>3</sup> × 2<sup>4</sup> = ?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q1a" name="q1" value="a">
+                        <label for="q1a">2<sup>7</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1b" name="q1" value="b">
+                        <label for="q1b">2<sup>12</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1c" name="q1" value="c">
+                        <label for="q1c">4<sup>7</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q1d" name="q1" value="d">
+                        <label for="q1d">2<sup>1</sup></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 2: Easy -->
+            <div class="question">
+                <div class="question-header">
+                    Question 2 <span class="difficulty easy">EASY</span>
+                </div>
+                <div class="expression">(5<sup>2</sup>)<sup>3</sup> = ?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q2a" name="q2" value="a">
+                        <label for="q2a">5<sup>5</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2b" name="q2" value="b">
+                        <label for="q2b">5<sup>6</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2c" name="q2" value="c">
+                        <label for="q2c">25<sup>3</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q2d" name="q2" value="d">
+                        <label for="q2d">15<sup>6</sup></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 3: Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    Question 3 <span class="difficulty intermediate">INTERMEDIATE</span>
+                </div>
+                <div class="expression">(3x<sup>2</sup>y<sup>-1</sup>)<sup>3</sup> × (2xy<sup>2</sup>)<sup>2</sup> = ?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q3a" name="q3" value="a">
+                        <label for="q3a">108x<sup>8</sup>y<sup>3</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3b" name="q3" value="b">
+                        <label for="q3b">108x<sup>8</sup>y</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3c" name="q3" value="c">
+                        <label for="q3c">36x<sup>8</sup>y</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q3d" name="q3" value="d">
+                        <label for="q3d">24x<sup>5</sup>y<sup>5</sup></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 4: Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    Question 4 <span class="difficulty intermediate">INTERMEDIATE</span>
+                </div>
+                <div class="expression">(4a<sup>3</sup>b<sup>-2</sup>)<sup>2</sup> ÷ (2ab<sup>-1</sup>)<sup>3</sup> = ?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q4a" name="q4" value="a">
+                        <label for="q4a">2a<sup>3</sup>b<sup>-1</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4b" name="q4" value="b">
+                        <label for="q4b">2a<sup>3</sup>b</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4c" name="q4" value="c">
+                        <label for="q4c">8a<sup>9</sup>b<sup>-7</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q4d" name="q4" value="d">
+                        <label for="q4d">2a<sup>6</sup>b<sup>-4</sup></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 5: Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    Question 5 <span class="difficulty intermediate">INTERMEDIATE</span>
+                </div>
+                <div class="expression">(2m<sup>-1</sup>n<sup>2</sup>)<sup>-3</sup> × (3mn<sup>-1</sup>)<sup>4</sup> = ?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q5a" name="q5" value="a">
+                        <label for="q5a">81m<sup>7</sup>n<sup>-10</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5b" name="q5" value="b">
+                        <label for="q5b">(81/8)m<sup>7</sup>n<sup>-10</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5c" name="q5" value="c">
+                        <label for="q5c">(81/8)m<sup>7</sup>n<sup>2</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q5d" name="q5" value="d">
+                        <label for="q5d">24m<sup>-2</sup>n<sup>2</sup></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 6: Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    Question 6 <span class="difficulty intermediate">INTERMEDIATE</span>
+                </div>
+                <div class="expression">(5p<sup>2</sup>q<sup>-3</sup>r)<sup>2</sup> × (p<sup>-1</sup>q<sup>2</sup>r<sup>3</sup>)<sup>3</sup> = ?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q6a" name="q6" value="a">
+                        <label for="q6a">25p<sup>7</sup>q<sup>3</sup>r<sup>11</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6b" name="q6" value="b">
+                        <label for="q6b">25p<sup>1</sup>q<sup>0</sup>r<sup>11</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6c" name="q6" value="c">
+                        <label for="q6c">25pr<sup>11</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q6d" name="q6" value="d">
+                        <label for="q6d">5p<sup>1</sup>r<sup>11</sup></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7: Intermediate -->
+            <div class="question">
+                <div class="question-header">
+                    Question 7 <span class="difficulty intermediate">INTERMEDIATE</span>
+                </div>
+                <div class="expression">(6x<sup>-2</sup>y<sup>3</sup>z)<sup>-2</sup> ÷ (3x<sup>2</sup>y<sup>-1</sup>z<sup>-2</sup>)<sup>-1</sup> = ?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" id="q7a" name="q7" value="a">
+                        <label for="q7a">(1/12)x<sup>-2</sup>y<sup>-5</sup>z<sup>-4</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7b" name="q7" value="b">
+                        <label for="q7b">(1/12)x<sup>2</sup>y<sup>5</sup>z<sup>4</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7c" name="q7" value="c">
+                        <label for="q7c">(1/12)x<sup>-2</sup>y<sup>-7</sup>z<sup>0</sup></label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="q7d" name="q7" value="d">
+                        <label for="q7d">12x<sup>2</sup>y<sup>-5</sup>z<sup>-4</sup></label>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="submit-container">
+            <button type="button" id="submitBtn" onclick="gradeExam()">Submit Exam 📝</button>
+        </div>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // Answer key
+        const answers = {
+            q1: 'a', // 2^3 × 2^4 = 2^7
+            q2: 'b', // (5^2)^3 = 5^6
+            q3: 'b', // (3x^2y^-1)^3 × (2xy^2)^2 = 27x^6y^-3 × 4x^2y^4 = 108x^8y^1
+            q4: 'b', // (4a^3b^-2)^2 ÷ (2ab^-1)^3 = 16a^6b^-4 ÷ 8a^3b^-3 = 2a^3b^-1 = 2a^3b
+            q5: 'b', // (2m^-1n^2)^-3 × (3mn^-1)^4 = (1/8)m^3n^-6 × 81m^4n^-4 = (81/8)m^7n^-10
+            q6: 'c', // (5p^2q^-3r)^2 × (p^-1q^2r^3)^3 = 25p^4q^-6r^2 × p^-3q^6r^9 = 25p^1q^0r^11 = 25pr^11
+            q7: 'a'  // (6x^-2y^3z)^-2 ÷ (3x^2y^-1z^-2)^-1 = (1/36)x^4y^-6z^-2 ÷ (1/3)x^-2y^1z^2 = (1/36)x^4y^-6z^-2 × 3x^2y^-1z^-2 = (1/12)x^-2y^-5z^-4
+        };
+
+        function gradeExam() {
+            const form = document.getElementById('examForm');
+            const formData = new FormData(form);
+            let score = 0;
+            const totalQuestions = 7;
+
+            // Check each answer
+            for (let i = 1; i <= totalQuestions; i++) {
+                const userAnswer = formData.get(`q${i}`);
+                if (userAnswer === answers[`q${i}`]) {
+                    score++;
+                }
+            }
+
+            // Calculate percentage
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            // Display result
+            const resultDiv = document.getElementById('result');
+            let message = `You scored ${score} out of ${totalQuestions} (${percentage}%)`;
+            let className = '';
+
+            if (percentage >= 90) {
+                message += " - Excellent work! 🌟";
+                className = 'score-excellent';
+            } else if (percentage >= 80) {
+                message += " - Good job! 👍";
+                className = 'score-good';
+            } else if (percentage >= 70) {
+                message += " - Fair performance. Keep practicing! 📚";
+                className = 'score-fair';
+            } else {
+                message += " - Needs improvement. Review exponent rules and try again! 💪";
+                className = 'score-needs-improvement';
+            }
+
+            resultDiv.className = `result show ${className}`;
+            resultDiv.innerHTML = message;
+
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add some interactivity to radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Remove any previous selection styling from this question
+                const questionDiv = this.closest('.question');
+                questionDiv.querySelectorAll('.option').forEach(opt => {
+                    opt.style.backgroundColor = '';
+                });
+                
+                // Highlight the selected option
+                this.closest('.option').style.backgroundColor = '#e3f2fd';
+            });
+        });
+    </script>
+</body>
+</html>

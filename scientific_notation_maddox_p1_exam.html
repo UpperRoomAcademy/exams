@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Notation Theory Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            background: #f8f9fa;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .question h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+
+        .options {
+            margin: 15px 0;
+        }
+
+        .option {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .fill-blank {
+            background: #e3f2fd;
+            border: 2px dashed #2196f3;
+            padding: 8px;
+            border-radius: 5px;
+            display: inline-block;
+            min-width: 80px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        select {
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            background: white;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        .submit-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        button {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .result {
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+
+        .correct {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .incorrect {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .answer-display {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .score-display {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔬 Scientific Notation Theory Quiz</h1>
+        
+        <form id="quizForm">
+            <!-- Question 1: Fill-in-the-blank with dropdown -->
+            <div class="question">
+                <h3>1. When converting from standard form to scientific notation, if you move the decimal point 3 places to the left, the exponent will be <span class="fill-blank">
+                    <select name="q1">
+                        <option value="">Select</option>
+                        <option value="positive3">positive 3</option>
+                        <option value="negative3">negative 3</option>
+                        <option value="zero">zero</option>
+                    </select>
+                </span>.</h3>
+                <div class="answer-display" id="answer1">
+                    <strong>Correct Answer:</strong> positive 3<br>
+                    <strong>Explanation:</strong> Moving the decimal point to the left increases the exponent by the number of places moved.
+                </div>
+            </div>
+
+            <!-- Question 2: Multiple choice -->
+            <div class="question">
+                <h3>2. In proper scientific notation, the coefficient (the number before × 10) must be:</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q2" value="a" id="q2a">
+                        <label for="q2a">Greater than or equal to 10</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="b" id="q2b">
+                        <label for="q2b">Between 1 (inclusive) and 10 (exclusive)</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="c" id="q2c">
+                        <label for="q2c">Any positive number</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="d" id="q2d">
+                        <label for="q2d">Less than 1</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer2">
+                    <strong>Correct Answer:</strong> Between 1 (inclusive) and 10 (exclusive)<br>
+                    <strong>Explanation:</strong> In proper scientific notation, the coefficient must be ≥ 1 and < 10.
+                </div>
+            </div>
+
+            <!-- Question 3: True/False -->
+            <div class="question">
+                <h3>3. True or False: When moving the decimal point to the right in scientific notation, the exponent decreases.</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q3" value="true" id="q3t">
+                        <label for="q3t">True</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="false" id="q3f">
+                        <label for="q3f">False</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer3">
+                    <strong>Correct Answer:</strong> True<br>
+                    <strong>Explanation:</strong> Moving the decimal point to the right decreases the exponent by the number of places moved.
+                </div>
+            </div>
+
+            <!-- Question 4: Multiple correct answers -->
+            <div class="question">
+                <h3>4. Which of the following are characteristics of numbers written in scientific notation? (Select all that apply)</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" name="q4" value="a" id="q4a">
+                        <label for="q4a">They contain exactly one non-zero digit before the decimal point</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="q4" value="b" id="q4b">
+                        <label for="q4b">They are multiplied by a power of 10</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="q4" value="c" id="q4c">
+                        <label for="q4c">They can have negative exponents</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="q4" value="d" id="q4d">
+                        <label for="q4d">The coefficient is always a whole number</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer4">
+                    <strong>Correct Answers:</strong> A, B, C<br>
+                    <strong>Explanation:</strong> Scientific notation has one non-zero digit before the decimal, uses powers of 10, and can have negative exponents. The coefficient can be a decimal.
+                </div>
+            </div>
+
+            <!-- Question 5: Fill-in-the-blank -->
+            <div class="question">
+                <h3>5. A negative exponent in scientific notation indicates that the original number is a __________ number (less than 1).</h3>
+                <div class="options">
+                    <input type="text" name="q5" placeholder="Type your answer">
+                </div>
+                <div class="answer-display" id="answer5">
+                    <strong>Correct Answer:</strong> decimal (or small, fractional)<br>
+                    <strong>Explanation:</strong> Negative exponents represent numbers smaller than 1.
+                </div>
+            </div>
+
+            <!-- Question 6: Multiple choice -->
+            <div class="question">
+                <h3>6. When converting 0.0045 to scientific notation, how many places do you move the decimal point?</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q6" value="a" id="q6a">
+                        <label for="q6a">2 places to the right</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="b" id="q6b">
+                        <label for="q6b">3 places to the right</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="c" id="q6c">
+                        <label for="q6c">2 places to the left</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="d" id="q6d">
+                        <label for="q6d">3 places to the left</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer6">
+                    <strong>Correct Answer:</strong> 3 places to the right<br>
+                    <strong>Explanation:</strong> To get 4.5, you move the decimal 3 places to the right from 0.0045.
+                </div>
+            </div>
+
+            <!-- Question 7: True/False -->
+            <div class="question">
+                <h3>7. True or False: The number 45.6 × 10³ is written in proper scientific notation.</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q7" value="true" id="q7t">
+                        <label for="q7t">True</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="false" id="q7f">
+                        <label for="q7f">False</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer7">
+                    <strong>Correct Answer:</strong> False<br>
+                    <strong>Explanation:</strong> The coefficient 45.6 is not between 1 and 10. It should be 4.56 × 10⁴.
+                </div>
+            </div>
+
+            <!-- Question 8: Fill-in-the-blank with dropdown -->
+            <div class="question">
+                <h3>8. If you have 2.5 × 10⁻⁴ and want to write it in standard form, you move the decimal point 4 places to the <span class="fill-blank">
+                    <select name="q8">
+                        <option value="">Select</option>
+                        <option value="left">left</option>
+                        <option value="right">right</option>
+                    </select>
+                </span>.</h3>
+                <div class="answer-display" id="answer8">
+                    <strong>Correct Answer:</strong> left<br>
+                    <strong>Explanation:</strong> A negative exponent means move the decimal point to the left.
+                </div>
+            </div>
+
+            <!-- Question 9: Multiple choice -->
+            <div class="question">
+                <h3>9. Which statement best describes the purpose of scientific notation?</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q9" value="a" id="q9a">
+                        <label for="q9a">To make numbers more complicated</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="b" id="q9b">
+                        <label for="q9b">To express very large or very small numbers in a compact form</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="c" id="q9c">
+                        <label for="q9c">To eliminate decimal points entirely</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="d" id="q9d">
+                        <label for="q9d">To convert all numbers to whole numbers</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer9">
+                    <strong>Correct Answer:</strong> To express very large or very small numbers in a compact form<br>
+                    <strong>Explanation:</strong> Scientific notation makes it easier to work with extremely large or small numbers.
+                </div>
+            </div>
+
+            <!-- Question 10: True/False -->
+            <div class="question">
+                <h3>10. True or False: Moving the decimal point 5 places to the left results in an exponent of -5.</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q10" value="true" id="q10t">
+                        <label for="q10t">True</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q10" value="false" id="q10f">
+                        <label for="q10f">False</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer10">
+                    <strong>Correct Answer:</strong> False<br>
+                    <strong>Explanation:</strong> Moving the decimal to the left increases the exponent, so it would be +5.
+                </div>
+            </div>
+
+            <!-- Question 11: Multiple correct answers -->
+            <div class="question">
+                <h3>11. Which of these numbers would have negative exponents when written in scientific notation? (Select all that apply)</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="checkbox" name="q11" value="a" id="q11a">
+                        <label for="q11a">0.00034</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="q11" value="b" id="q11b">
+                        <label for="q11b">145,000</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="q11" value="c" id="q11c">
+                        <label for="q11c">0.75</label>
+                    </div>
+                    <div class="option">
+                        <input type="checkbox" name="q11" value="d" id="q11d">
+                        <label for="q11d">5.2</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer11">
+                    <strong>Correct Answers:</strong> A, C<br>
+                    <strong>Explanation:</strong> Numbers less than 1 have negative exponents in scientific notation.
+                </div>
+            </div>
+
+            <!-- Question 12: Fill-in-the-blank -->
+            <div class="question">
+                <h3>12. The rule for decimal movement states: Moving right __________ the exponent, moving left __________ the exponent.</h3>
+                <div class="options">
+                    <div>First blank: <input type="text" name="q12a" placeholder="increases/decreases"></div>
+                    <div>Second blank: <input type="text" name="q12b" placeholder="increases/decreases"></div>
+                </div>
+                <div class="answer-display" id="answer12">
+                    <strong>Correct Answers:</strong> decreases, increases<br>
+                    <strong>Explanation:</strong> Moving decimal right decreases exponent; moving left increases exponent.
+                </div>
+            </div>
+
+            <!-- Question 13: Multiple choice -->
+            <div class="question">
+                <h3>13. When converting from scientific notation to standard form, what does a positive exponent tell you?</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q13" value="a" id="q13a">
+                        <label for="q13a">Move the decimal point to the left</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q13" value="b" id="q13b">
+                        <label for="q13b">Move the decimal point to the right</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q13" value="c" id="q13c">
+                        <label for="q13c">Keep the decimal point in the same place</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q13" value="d" id="q13d">
+                        <label for="q13d">Remove the decimal point</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer13">
+                    <strong>Correct Answer:</strong> Move the decimal point to the right<br>
+                    <strong>Explanation:</strong> Positive exponents indicate moving the decimal to the right to get a larger number.
+                </div>
+            </div>
+
+            <!-- Question 14: True/False -->
+            <div class="question">
+                <h3>14. True or False: In scientific notation, 10⁰ equals 1, which means numbers like 7.5 × 10⁰ equal just the coefficient.</h3>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q14" value="true" id="q14t">
+                        <label for="q14t">True</label>
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q14" value="false" id="q14f">
+                        <label for="q14f">False</label>
+                    </div>
+                </div>
+                <div class="answer-display" id="answer14">
+                    <strong>Correct Answer:</strong> True<br>
+                    <strong>Explanation:</strong> 10⁰ = 1, so 7.5 × 10⁰ = 7.5 × 1 = 7.5.
+                </div>
+            </div>
+        </form>
+
+        <div class="submit-container">
+            <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+        </div>
+
+        <div id="result" class="result">
+            <div id="scoreDisplay" class="score-display"></div>
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'positive3',
+            q2: 'b',
+            q3: 'true',
+            q4: ['a', 'b', 'c'],
+            q5: ['decimal', 'small', 'fractional'],
+            q6: 'b',
+            q7: 'false',
+            q8: 'left',
+            q9: 'b',
+            q10: 'false',
+            q11: ['a', 'c'],
+            q12a: 'decreases',
+            q12b: 'increases',
+            q13: 'b',
+            q14: 'true'
+        };
+
+        function submitQuiz() {
+            let score = 0;
+            let totalQuestions = 14;
+
+            // Check each question
+            for (let i = 1; i <= 14; i++) {
+                const answerId = 'answer' + i;
+                const answerDiv = document.getElementById(answerId);
+                
+                if (i === 4 || i === 11) {
+                    // Multiple select questions
+                    const checkboxes = document.querySelectorAll(`input[name="q${i}"]:checked`);
+                    const userAnswers = Array.from(checkboxes).map(cb => cb.value);
+                    const correctAnswerArray = correctAnswers['q' + i];
+                    
+                    if (userAnswers.length === correctAnswerArray.length && 
+                        userAnswers.every(answer => correctAnswerArray.includes(answer))) {
+                        score++;
+                        answerDiv.style.background = '#d4edda';
+                        answerDiv.style.borderColor = '#28a745';
+                    } else {
+                        answerDiv.style.background = '#f8d7da';
+                        answerDiv.style.borderColor = '#dc3545';
+                    }
+                } else if (i === 5) {
+                    // Text input question
+                    const userAnswer = document.querySelector(`input[name="q${i}"]`).value.toLowerCase().trim();
+                    const correctAnswerArray = correctAnswers['q' + i];
+                    
+                    if (correctAnswerArray.some(answer => answer === userAnswer)) {
+                        score++;
+                        answerDiv.style.background = '#d4edda';
+                        answerDiv.style.borderColor = '#28a745';
+                    } else {
+                        answerDiv.style.background = '#f8d7da';
+                        answerDiv.style.borderColor = '#dc3545';
+                    }
+                } else if (i === 12) {
+                    // Two-part fill-in-the-blank
+                    const userAnswerA = document.querySelector(`input[name="q${i}a"]`).value.toLowerCase().trim();
+                    const userAnswerB = document.querySelector(`input[name="q${i}b"]`).value.toLowerCase().trim();
+                    
+                    if (userAnswerA === correctAnswers['q' + i + 'a'] && 
+                        userAnswerB === correctAnswers['q' + i + 'b']) {
+                        score++;
+                        answerDiv.style.background = '#d4edda';
+                        answerDiv.style.borderColor = '#28a745';
+                    } else {
+                        answerDiv.style.background = '#f8d7da';
+                        answerDiv.style.borderColor = '#dc3545';
+                    }
+                } else {
+                    // Single answer questions (radio buttons, select)
+                    const questionName = 'q' + i;
+                    const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`) || 
+                                         document.querySelector(`select[name="${questionName}"]`);
+                    
+                    if (selectedAnswer && selectedAnswer.value === correctAnswers[questionName]) {
+                        score++;
+                        answerDiv.style.background = '#d4edda';
+                        answerDiv.style.borderColor = '#28a745';
+                    } else {
+                        answerDiv.style.background = '#f8d7da';
+                        answerDiv.style.borderColor = '#dc3545';
+                    }
+                }
+                
+                answerDiv.style.display = 'block';
+            }
+
+            // Display score
+            const percentage = Math.round((score / totalQuestions) * 100);
+            document.getElementById('scoreDisplay').innerHTML = 
+                `Your Score: ${score}/${totalQuestions} (${percentage}%)`;
+            document.getElementById('result').style.display = 'block';
+            
+            // Scroll to results
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
