@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Notation Exam</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .exam-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .exam-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+        
+        .exam-header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .exam-header p {
+            color: #666;
+            font-size: 1.1em;
+            margin: 10px 0 0 0;
+        }
+        
+        .question {
+            margin-bottom: 30px;
+            padding: 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+        
+        .question:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+        
+        .question-header {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .math-expression {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.3em;
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+        
+        .choices {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .choice {
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .choice:hover {
+            border-color: #667eea;
+            background: #f0f8ff;
+        }
+        
+        .choice input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .choice.selected {
+            border-color: #667eea;
+            background: #e8f0fe;
+        }
+        
+        .choice.correct {
+            border-color: #4caf50;
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+        
+        .choice.incorrect {
+            border-color: #f44336;
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .submit-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .results.show {
+            display: block;
+        }
+        
+        .score-excellent {
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: white;
+        }
+        
+        .score-good {
+            background: linear-gradient(45deg, #2196f3, #64b5f6);
+            color: white;
+        }
+        
+        .score-fair {
+            background: linear-gradient(45deg, #ff9800, #ffb74d);
+            color: white;
+        }
+        
+        .score-poor {
+            background: linear-gradient(45deg, #f44336, #e57373);
+            color: white;
+        }
+        
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            font-size: 1em;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .reset-btn:hover {
+            background: #5a6268;
+            transform: translateY(-1px);
+        }
+        
+        sup {
+            font-size: 0.8em;
+            vertical-align: super;
+        }
+        
+        .fraction {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        .fraction .numerator {
+            border-bottom: 1px solid black;
+            padding: 0 2px;
+            display: block;
+        }
+        
+        .fraction .denominator {
+            padding: 0 2px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="exam-container">
+        <div class="exam-header">
+            <h1>Scientific Notation Exam</h1>
+            <p>7 Questions • Multiple Choice • Show your mental work!</p>
+        </div>
+        
+        <form id="examForm">
+            <!-- Question 1: Easy -->
+            <div class="question">
+                <div class="question-header">Question 1</div>
+                <div class="question-text">
+                    Convert the following number to scientific notation:
+                    <div class="math-expression">0.00045</div>
+                </div>
+                <div class="choices">
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q1" value="a"> A) 4.5 × 10<sup>4</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q1" value="b"> B) 45 × 10<sup>-5</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q1" value="c"> C) 4.5 × 10<sup>-4</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q1" value="d"> D) 4.5 × 10<sup>-3</sup>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 2: Intermediate -->
+            <div class="question">
+                <div class="question-header">Question 2</div>
+                <div class="question-text">
+                    Evaluate the following expression:
+                    <div class="math-expression">
+                        <span class="fraction">
+                            <span class="numerator">(3.2 × 10<sup>6</sup>) × (1.5 × 10<sup>-3</sup>)</span>
+                            <span class="denominator">(2.4 × 10<sup>2</sup>)</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="choices">
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q2" value="a"> A) 2.0 × 10<sup>1</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q2" value="b"> B) 2.0 × 10<sup>2</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q2" value="c"> C) 1.0 × 10<sup>1</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q2" value="d"> D) 1.0 × 10<sup>2</sup>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 3: Challenging -->
+            <div class="question">
+                <div class="question-header">Question 3</div>
+                <div class="question-text">
+                    Calculate the result of this complex expression:
+                    <div class="math-expression">
+                        <span class="fraction">
+                            <span class="numerator">(4.5 × 10<sup>-3</sup>) × (2 × 10<sup>5</sup>)</span>
+                            <span class="denominator">(9 × 10<sup>1</sup>) - (3 × 10<sup>1</sup>)</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="choices">
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q3" value="a"> A) 1.5 × 10<sup>1</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q3" value="b"> B) 1.5 × 10<sup>2</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q3" value="c"> C) 15
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q3" value="d"> D) 1.5 × 10<sup>0</sup>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 4: Challenging -->
+            <div class="question">
+                <div class="question-header">Question 4</div>
+                <div class="question-text">
+                    Solve this multi-step scientific notation problem:
+                    <div class="math-expression">
+                        (7.2 × 10<sup>4</sup>) + [<span class="fraction">
+                            <span class="numerator">(3.6 × 10<sup>5</sup>)</span>
+                            <span class="denominator">(4 × 10<sup>1</sup>)</span>
+                        </span>] × (2 × 10<sup>-1</sup>)
+                    </div>
+                </div>
+                <div class="choices">
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q4" value="a"> A) 9.0 × 10<sup>4</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q4" value="b"> B) 7.38 × 10<sup>4</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q4" value="c"> C) 1.08 × 10<sup>5</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q4" value="d"> D) 9.0 × 10<sup>3</sup>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 5: Intermediate -->
+            <div class="question">
+                <div class="question-header">Question 5</div>
+                <div class="question-text">
+                    Convert 2.34 × 10<sup>-6</sup> to standard decimal notation:
+                </div>
+                <div class="choices">
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q5" value="a"> A) 0.000234
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q5" value="b"> B) 0.0000234
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q5" value="c"> C) 0.00000234
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q5" value="d"> D) 2340000
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 6: Challenging -->
+            <div class="question">
+                <div class="question-header">Question 6</div>
+                <div class="question-text">
+                    Evaluate this expression with mixed operations:
+                    <div class="math-expression">
+                        [(8.1 × 10<sup>3</sup>) ÷ (2.7 × 10<sup>1</sup>)] × [(6 × 10<sup>-2</sup>) + (4 × 10<sup>-2</sup>)]
+                    </div>
+                </div>
+                <div class="choices">
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q6" value="a"> A) 3.0 × 10<sup>1</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q6" value="b"> B) 3.0 × 10<sup>0</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q6" value="c"> C) 3.0 × 10<sup>2</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q6" value="d"> D) 30
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 7: Challenging -->
+            <div class="question">
+                <div class="question-header">Question 7</div>
+                <div class="question-text">
+                    Calculate the final result of this complex expression:
+                    <div class="math-expression">
+                        <span class="fraction">
+                            <span class="numerator">[(5.4 × 10<sup>2</sup>) × (3 × 10<sup>-1</sup>)] + (1.8 × 10<sup>1</sup>)</span>
+                            <span class="denominator">(9 × 10<sup>0</sup>)</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="choices">
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q7" value="a"> A) 2.0 × 10<sup>1</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q7" value="b"> B) 4.0 × 10<sup>1</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q7" value="c"> C) 4.0 × 10<sup>0</sup>
+                    </label>
+                    <label class="choice" onclick="selectChoice(this)">
+                        <input type="radio" name="q7" value="d"> D) 2.0 × 10<sup>0</sup>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="submit-container">
+                <button type="button" class="submit-btn" onclick="submitExam()">Submit Exam</button>
+            </div>
+        </form>
+        
+        <div id="results" class="results">
+            <div id="score-text"></div>
+            <button class="reset-btn" onclick="resetExam()">Take Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Correct answers (calculated and verified step by step)
+        const correctAnswers = {
+            q1: 'c', // 0.00045 = 4.5 × 10^-4 (move decimal 4 places right, so exponent is -4)
+            q2: 'a', // (3.2×10^6 × 1.5×10^-3) ÷ (2.4×10^2) = 4.8×10^3 ÷ 2.4×10^2 = 2.0×10^1
+            q3: 'c', // (4.5×10^-3 × 2×10^5) ÷ (9×10^1 - 3×10^1) = 9×10^2 ÷ 6×10^1 = 1.5×10^1 = 15
+            q4: 'b', // 7.2×10^4 + [(3.6×10^5 ÷ 4×10^1) × 2×10^-1] = 72000 + [9000 × 0.2] = 72000 + 1800 = 73800 = 7.38×10^4
+            q5: 'c', // 2.34 × 10^-6 = 0.00000234 (move decimal 6 places left)
+            q6: 'a', // [8.1×10^3 ÷ 2.7×10^1] × [6×10^-2 + 4×10^-2] = 300 × 0.1 = 30 = 3.0×10^1
+            q7: 'a'  // [(5.4×10^2 × 3×10^-1) + 1.8×10^1] ÷ 9×10^0 = [162 + 18] ÷ 9 = 180 ÷ 9 = 20 = 2.0×10^1
+        };
+
+        function selectChoice(choiceElement) {
+            // Remove selection from other choices in the same question
+            const questionDiv = choiceElement.closest('.question');
+            const allChoices = questionDiv.querySelectorAll('.choice');
+            allChoices.forEach(choice => choice.classList.remove('selected'));
+            
+            // Add selection to clicked choice
+            choiceElement.classList.add('selected');
+            
+            // Select the radio button
+            const radioButton = choiceElement.querySelector('input[type="radio"]');
+            radioButton.checked = true;
+        }
+
+        function submitExam() {
+            const form = document.getElementById('examForm');
+            const formData = new FormData(form);
+            let score = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+            
+            // Check each answer and highlight correct/incorrect
+            for (let question in correctAnswers) {
+                const userAnswer = formData.get(question);
+                const questionDiv = document.querySelector(`input[name="${question}"]`).closest('.question');
+                const choices = questionDiv.querySelectorAll('.choice');
+                
+                choices.forEach(choice => {
+                    const radioValue = choice.querySelector('input').value;
+                    const isCorrect = radioValue === correctAnswers[question];
+                    const isSelected = choice.querySelector('input').checked;
+                    
+                    if (isCorrect) {
+                        choice.classList.add('correct');
+                    } else if (isSelected && !isCorrect) {
+                        choice.classList.add('incorrect');
+                    }
+                });
+                
+                if (userAnswer === correctAnswers[question]) {
+                    score++;
+                }
+            }
+            
+            // Display results
+            displayResults(score, totalQuestions);
+            
+            // Disable submit button
+            document.querySelector('.submit-btn').disabled = true;
+            document.querySelector('.submit-btn').textContent = 'Submitted';
+        }
+
+        function displayResults(score, total) {
+            const resultsDiv = document.getElementById('results');
+            const scoreText = document.getElementById('score-text');
+            const percentage = Math.round((score / total) * 100);
+            
+            let scoreClass, message;
+            if (percentage >= 85) {
+                scoreClass = 'score-excellent';
+                message = 'Excellent work!';
+            } else if (percentage >= 70) {
+                scoreClass = 'score-good';
+                message = 'Good job!';
+            } else if (percentage >= 50) {
+                scoreClass = 'score-fair';
+                message = 'Fair effort, keep practicing!';
+            } else {
+                scoreClass = 'score-poor';
+                message = 'Keep studying and try again!';
+            }
+            
+            scoreText.innerHTML = `
+                <div>Your Score: ${score}/${total} (${percentage}%)</div>
+                <div style="margin-top: 10px; font-size: 0.9em;">${message}</div>
+            `;
+            
+            resultsDiv.className = `results show ${scoreClass}`;
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetExam() {
+            // Reset form
+            document.getElementById('examForm').reset();
+            
+            // Remove all styling from choices
+            document.querySelectorAll('.choice').forEach(choice => {
+                choice.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Re-enable submit button
+            document.querySelector('.submit-btn').disabled = false;
+            document.querySelector('.submit-btn').textContent = 'Submit Exam';
+            
+            // Hide results
+            document.getElementById('results').classList.remove('show');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
